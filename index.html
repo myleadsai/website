@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforma tu Conocimiento en un Negocio Exitoso - Myleads.ai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5d3fd3;
+            --secondary-color: #2b2b2b;
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+            --light-text-color: #a0a0a0;
+            --font-family: 'Poppins', sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #5d3fd3 0%, #121212 100%);
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        .bg-dark { background-color: var(--secondary-color); }
+        .btn {
+            display: inline-block; padding: 1rem 2rem; border-radius: 5px;
+            text-decoration: none; font-weight: 600; transition: all 0.3s ease;
+            border: 2px solid var(--primary-color); text-align: center;
+        }
+        .btn-primary { background-color: var(--primary-color); color: #fff; }
+        .btn-primary:hover { background-color: transparent; color: var(--primary-color); }
+        .btn-secondary { background-color: transparent; color: var(--primary-color); margin-left: 1rem; }
+        .btn-secondary:hover { background-color: var(--primary-color); color: #fff; }
+        .btn-lg { font-size: 1.25rem; padding: 1.25rem 2.5rem; }
+        .section-title { font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 3rem; color: #fff; }
+        section { padding: 6rem 0; }
+        .text-center { text-align: center; }
+        .mt-4 { margin-top: 1.5rem; }
+        .main-header { background-color: #121212; padding: 10rem 0 6rem; text-align: center; }
+        .header-logo { margin-bottom: 2rem; }
+        .header-logo img { max-width: 250px; }
+        .main-title { font-size: 3.5rem; line-height: 1.1; margin-top: 1rem; margin-bottom: 1rem; }
+        .subtitle { font-size: 1.2rem; color: var(--light-text-color); max-width: 600px; margin: 0 auto 2rem; }
+        .graphic-img { display: block; max-width: 100%; height: auto; margin: 0 auto 3rem; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .problem-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
+        .problem-card:hover { transform: translateY(-10px); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .service-card { background-color: #2b2b2b; padding: 2rem; border-radius: 10px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--primary-color); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }
+        .service-card img { margin-bottom: 1.5rem; }
+        .service-card h4 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--primary-color); }
+        .socios-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+        .socio-card { padding: 2rem; }
+        .socio-foto { border-radius: 50%; border: 5px solid var(--primary-color); width: 200px; height: 200px; object-fit: cover; margin-bottom: 1rem; box-shadow: 0 0 20px var(--primary-color); }
+        .socio-card h3 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; }
+        .socio-card h4 { font-size: 1.2rem; color: var(--light-text-color); margin-bottom: 1rem; }
+        .program-section .subtitle { max-width: 800px; margin: 0 auto 2rem; font-size: 1.4rem; line-height: 1.8; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .testimonial-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-align: left; }
+        .faq-item { background-color: var(--secondary-color); padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; text-align: left; transition: background-color 0.3s ease; }
+        .faq-question { font-size: 1.25rem; font-weight: 600; cursor: pointer; }
+        .faq-answer { padding-top: 1rem; display: none; }
+        .final-cta-section { text-align: center; }
+        .main-footer { padding: 2rem 0; text-align: center; background-color: #000; }
+        .footer-links a { color: var(--primary-color); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: #fff; }
+        @media (min-width: 769px) { .socios-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.5rem; }
+            .btn-secondary { margin: 1rem 0 0 0; }
+            .main-header .btn-primary { margin-bottom: 1rem; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 0 1rem; }
+            .cta-buttons { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header" id="inicio">
+        <div class="container hero-content">
+            <div class="header-logo">
+                <img src="Logo for myleads.ai.jpg" alt="Myleads.ai Logo">
+                <h1 class="main-title">Cómo Transformar tu Conocimiento en un Negocio de 6 y 7 Cifras</h1>
+            </div>
+            <p class="subtitle">Descubre el método probado para empaquetar tu conocimiento único, atraer a la audiencia perfecta y construir un negocio online que te dé libertad y propósito.</p>
+            <div class="cta-buttons">
+                <a href="#programa" class="btn btn-primary">Descubre el Programa</a>
+                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-secondary">Agenda una Llamada</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="problem-section" id="problema">
+            <div class="container">
+                <h2 class="section-title">El Problema: ¿Te sientes estancado?</h2>
+                <div class="problem-grid">
+                    <div class="problem-card">
+                        <h3>Falta de Claridad</h3>
+                        <p>Tienes mucho conocimiento, pero no sabes cómo estructurarlo en una oferta atractiva que la gente esté dispuesta a pagar.</p>
+                    </div>
+                    <div class="problem-card">
+                        <h3>Ingresos Inconsistentes</h3>
+                        <p>Dependes de clientes individuales y no tienes un sistema escalable para generar ingresos de forma regular y predecible.</p>
+                    </div>
+                    <div class="problem-card">
+                        <h3>Miedo a las Redes</h3>
+                        <p>Sabes que necesitas estar online, pero no tienes una estrategia efectiva para convertir seguidores en clientes de pago.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="services-section bg-dark" id="servicios">
+            <div class="container">
+                <h2 class="section-title">El Método "Conocimiento Exitoso"</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/60/5d3fd3/ffffff?text=✔" alt="Icono de check">
+                        <h4>Consultorías Grupales en Vivo Semanal con Franco y Tomás</h4>
+                        <p>Recibes estrategias personalizadas y resuelves todas tus consultas en reuniones semanales en vivo con los fundadores.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/60/5d3fd3/ffffff?text=✔" alt="Icono de check">
+                        <h4>Auditoría Personalizada de tu Negocio</h4>
+                        <p>Evaluamos mejoras, ajustamos procesos y definimos estrategias para optimizar resultados.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/60/5d3fd3/ffffff?text=✔" alt="Icono de check">
+                        <h4>Reunión de Revisión del Estado de tu Negocio</h4>
+                        <p>Revisión estratégica a los 45 días para analizar resultados y ajustar tu plan de crecimiento.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/60/5d3fd3/ffffff?text=✔" alt="Icono de check">
+                        <h4>Soporte 1 a 1 con nuestros Consultores por Chat Privado</h4>
+                        <p>Soporte directo a través de chat privado, donde recibirás feedback y soluciones prácticas de expertos en cada área.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/60/5d3fd3/ffffff?text=✔" alt="Icono de check">
+                        <h4>+20hs de Reuniones Semanales con Expertos de diversas áreas</h4>
+                        <p>Enfocadas en estrategias avanzadas de anuncios, prospección, ventas, entrega de servicio y operaciones.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/60/5d3fd3/ffffff?text=✔" alt="Icono de check">
+                        <h4>Acceso a Eventos Anuales con los Fundadores y el Equipo</h4>
+                        <p>Asiste a eventos exclusivos para ampliar tu red, acceder a conocimientos de alto nivel y conectar con líderes del sector.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="program-section" id="programa">
+            <div class="container text-center">
+                <h2 class="section-title">Embudos, Automatizaciones y Más</h2>
+                <p class="subtitle">
+                    En Myleads.ai, no solo te damos un método, sino que te ayudamos a construir la maquinaria para que tu negocio funcione en piloto automático. Te enseñaremos a crear <strong>embudos de ventas</strong> que capturen leads, a implementar <strong>automatizaciones</strong> que nutran a tus prospectos y a diseñar <strong>CTAs</strong> irresistibles.
+                </p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Embudos de Venta Optimizados</h4>
+                        <p>Construye un camino claro para que tus seguidores se conviertan en clientes de pago, desde el primer contacto hasta la venta.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Automatización Inteligente</h4>
+                        <p>Aprende a usar herramientas para que tus procesos de marketing y ventas trabajen por ti 24/7, liberando tu tiempo.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Lead Magnets que Capturan</h4>
+                        <p>Crea activos digitales de valor que atraigan a tu audiencia ideal y la motiven a dejarte su información de contacto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="socios-section bg-dark" id="socios">
+            <div class="container">
+                <h2 class="section-title">Conoce a los Socios: Franco y Tomás</h2>
+                <div class="socios-grid">
+                    <div class="socio-card">
+                        <img src="[URL_DE_LA_FOTO_DE_FRANCO]" alt="Foto de Franco Scaglione" class="socio-foto">
+                        <h3>Franco Scaglione</h3>
+                        <h4>Licenciado en Negocios Digitales y Estratega de Crecimiento</h4>
+                        <p>Como CEO de Myleads.ai, Franco es un experto en la creación de contenido de alto impacto y en el diseño de estrategias para escalar negocios de manera exponencial. Su experiencia en el manejo de comunidades de más de 30 mil miembros activos demuestra su habilidad para entender a la audiencia y construir marcas que generan autoridad.</p>
+                    </div>
+                    <div class="socio-card">
+                        <img src="[URL_DE_LA_FOTO_DE_TOMÁS]" alt="Foto de Tomás Heredia" class="socio-foto">
+                        <h3>Tomás Heredia</h3>
+                        <h4>Experto en Marketing Digital y Automatizaciones</h4>
+                        <p>Tomás es el especialista en marketing digital encargado de transformar prospectos en clientes. Con un profundo conocimiento en el diseño de embudos de venta y en herramientas de automatización, se enfoca en crear sistemas que trabajen por ti 24/7 para generar leads de alta calidad y maximizar tus conversiones de forma constante.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="program-section" id="programa-final">
+            <div class="container text-center">
+                <h2 class="section-title">Testimonios de Clientes</h2>
+                <p class="subtitle">
+                    Escucha lo que nuestros clientes tienen que decir sobre la transformación de sus negocios y cómo han logrado sus metas gracias a nuestra metodología.
+                </p>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Antes me sentía abrumada y sin dirección. El programa me dio la claridad y las herramientas que necesitaba para lanzar mi negocio online y generar mis primeros ingresos en tiempo récord."</p>
+                        <cite>- Laura Gómez, Consultora de Marketing Digital</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Estaba cansado de intercambiar tiempo por dinero. Gracias a este sistema, ahora tengo una oferta sólida y un embudo que trabaja para mí las 24 horas. ¡Mi facturación mensual se ha multiplicado!"</p>
+                        <cite>- Carlos Rodríguez, Coach de Desarrollo Personal</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="asesoria-section" id="asesoria">
+            <div class="container text-center">
+                <h2 class="section-title">¿Tienes preguntas o quieres un plan a medida?</h2>
+                <p class="subtitle">Agenda una asesoría gratuita de 15 minutos para que hablemos sobre tus objetivos y cómo podemos ayudarte a construir un negocio rentable y sostenible.</p>
+                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg">Agenda tu Sesión de 15 Minutos</a>
+            </div>
+        </section>
+        <section class="final-cta-section bg-dark" id="contacto">
+            <div class="container">
+                <h2 class="section-title">Es Hora de Compartir tu Genio con el Mundo y Ser Recompensado por Ello</h2>
+                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg">Comienza tu Transformación Ahora</a>
+            </div>
+        </section>
+        <!-- FAQ Section with interactivity -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <div class="faq-item">
+                    <div class="faq-question">¿Cómo funciona el programa?</div>
+                    <div class="faq-answer">El programa incluye consultorías grupales, auditorías personalizadas, soporte por chat y acceso a eventos exclusivos.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Quiénes pueden participar?</div>
+                    <div class="faq-answer">Cualquier emprendedor, coach, consultor o profesional que quiera escalar su negocio con su conocimiento.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Hay garantía de resultados?</div>
+                    <div class="faq-answer">Aplicamos estrategias probadas, pero el éxito depende de la acción y compromiso de cada participante.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="main-footer">
+        <div class="container">
+            <p>
+                &copy; 2023 
+                <a href="https://myleadsai.github.io/website/" target="_blank" style="color: #5d3fd3; text-decoration: underline;">
+                    myleadsai.github.io/website
+                </a>. Todos los derechos reservados.
+            </p>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // FAQ accordion functionality
+      document.querySelectorAll(".faq-question").forEach(q => {
+        q.addEventListener("click", function() {
+          const answer = this.nextElementSibling;
+          answer.style.display = answer.style.display === "block" ? "none" : "block";
+        });
+      });
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href");
+          if (document.querySelector(targetId)) {
+            e.preventDefault();
+            document.querySelector(targetId).scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+    });
+    </script>
+</body>
+</html>
