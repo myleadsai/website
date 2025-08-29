@@ -11,7 +11,7 @@
         :root {
             --primary-color: #5d3fd3;
             --secondary-color: #2b2b2b;
-            --background-color: #121212;
+            --background-color: #121212; /* Color de fondo principal opaco */
             --text-color: #e0e0e0;
             --light-text-color: #a0a0a0;
             --font-family: 'Poppins', sans-serif;
@@ -22,7 +22,7 @@
             font-family: var(--font-family);
             line-height: 1.6;
             color: var(--text-color);
-            background-color: rgba(18, 18, 18, 0.9); /* CAMBIO: Fondo translúcido */
+            background-color: var(--background-color); /* Vuelve al fondo opaco principal */
         }
         #particles-js {
             position: fixed;
@@ -36,7 +36,7 @@
             position: relative; 
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-        .bg-dark { background-color: rgba(43, 43, 43, 0.9); } /* CAMBIO: Fondo oscuro translúcido */
+        .bg-dark { background-color: rgba(43, 43, 43, 0.9); } /* Mantiene el fondo oscuro translúcido */
         .btn {
             display: inline-block; padding: 1rem 2rem; border-radius: 5px;
             text-decoration: none; font-weight: 600; transition: all 0.3s ease;
