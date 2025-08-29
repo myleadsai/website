@@ -7,20 +7,37 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(270deg, #1a1a1a, #5d3fd3);
-      background-size: 400% 400%;
-      animation: fondoAnimado 15s ease infinite;
+      background-color: #0f0f0f;
+      overflow: hidden;
       font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px;
+      position: relative;
+      z-index: 0;
     }
 
-    @keyframes fondoAnimado {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .burbuja {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(93, 63, 211, 0.2);
+      animation: flotar 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
     }
 
     .card {
@@ -112,6 +129,19 @@
     <h3>Acceso a Eventos Anuales con los Fundadores y el Equipo</h3>
     <p>Participa de eventos presenciales y virtuales para conectar con otros miembros y tener una conversación directa con líderes del sector.</p>
   </div>
+
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const burbuja = document.createElement('div');
+      burbuja.classList.add('burbuja');
+      burbuja.style.width = `${Math.random() * 40 + 10}px`;
+      burbuja.style.height = burbuja.style.width;
+      burbuja.style.left = `${Math.random() * 100}vw`;
+      burbuja.style.animationDuration = `${Math.random() * 10 + 10}s`;
+      burbuja.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(burbuja);
+    }
+  </script>
 
 </body>
 </html>
