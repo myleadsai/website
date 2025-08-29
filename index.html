@@ -41,11 +41,13 @@
             display: inline-block; padding: 1rem 2rem; border-radius: 5px;
             text-decoration: none; font-weight: 600; transition: all 0.3s ease;
             border: 2px solid var(--primary-color); text-align: center;
+            /* Mejora de animación de botones */
+            transform: translateY(0);
         }
         .btn-primary { background-color: var(--primary-color); color: #fff; }
-        .btn-primary:hover { background-color: transparent; color: var(--primary-color); }
+        .btn-primary:hover { background-color: transparent; color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(93, 63, 211, 0.4); }
         .btn-secondary { background-color: transparent; color: var(--primary-color); margin-left: 1rem; }
-        .btn-secondary:hover { background-color: var(--primary-color); color: #fff; }
+        .btn-secondary:hover { background-color: var(--primary-color); color: #fff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(93, 63, 211, 0.4); }
         .btn-lg { font-size: 1.25rem; padding: 1.25rem 2.5rem; }
         .section-title { font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 3rem; color: #fff; }
         section { padding: 6rem 0; }
@@ -57,36 +59,100 @@
         .main-title { font-size: 3.5rem; line-height: 1.1; margin-top: 1rem; margin-bottom: 1rem; }
         .subtitle { font-size: 1.2rem; color: var(--light-text-color); max-width: 600px; margin: 0 auto 2rem; }
         .graphic-img { display: block; max-width: 100%; height: auto; margin: 0 auto 3rem; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        
+        /* Problem Section */
         .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .problem-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
-        .problem-card:hover { transform: translateY(-10px); }
+        .problem-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .problem-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+
+        /* Services Section */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
         .service-card { background-color: #2b2b2b; padding: 2rem; border-radius: 10px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--primary-color); }
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }
         .service-card svg { margin-bottom: 1.5rem; }
         .service-card h4 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--primary-color); }
+        
+        /* Socios Section */
         .socios-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; text-align: center; }
         .socio-card { padding: 2rem; }
-        .socio-foto { border-radius: 50%; border: 5px solid var(--primary-color); width: 200px; height: 200px; object-fit: cover; margin-bottom: 1rem; box-shadow: 0 0 20px var(--primary-color); }
+        .socio-foto { border-radius: 50%; border: 5px solid var(--primary-color); width: 200px; height: 200px; object-fit: cover; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(93, 63, 211, 0.7); }
         .socio-card h3 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; }
         .socio-card h4 { font-size: 1.2rem; color: var(--light-text-color); margin-bottom: 1rem; }
-        .program-section .subtitle { max-width: 800px; margin: 0 auto 2rem; font-size: 1.4rem; line-height: 1.8; }
-        .faq-item { background-color: var(--secondary-color); padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; text-align: left; transition: background-color 0.3s ease; }
-        .faq-question { font-size: 1.25rem; font-weight: 600; cursor: pointer; }
-        .faq-answer { padding-top: 1rem; display: none; }
+        
+        /* Program & Este Programa Es Para Ti Si... sections */
+        .program-section .subtitle, .for-you-section .subtitle { max-width: 800px; margin: 0 auto 2rem; font-size: 1.4rem; line-height: 1.8; }
+        .for-you-list { list-style: none; padding: 0; text-align: left; max-width: 700px; margin: 2rem auto 0; }
+        .for-you-list li { background-color: var(--secondary-color); margin-bottom: 1rem; padding: 1rem 1.5rem; border-radius: 8px; display: flex; align-items: center; border-left: 5px solid var(--primary-color); box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .for-you-list li::before { content: '✓'; color: var(--primary-color); font-weight: bold; font-size: 1.5rem; margin-right: 1rem; }
+
+        /* Casos de Éxito */
+        .success-cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .success-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .success-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+        .success-card h3 { color: var(--primary-color); margin-bottom: 0.8rem; font-size: 1.6rem; }
+        .success-card p { margin-bottom: 1rem; color: var(--light-text-color); }
+        .success-card .client-info { font-weight: 600; color: #fff; }
+        .metrics { display: flex; justify-content: space-around; margin-top: 1.5rem; flex-wrap: wrap; }
+        .metric-item { text-align: center; margin: 0.5rem; }
+        .metric-item strong { display: block; font-size: 2rem; color: var(--primary-color); line-height: 1; }
+        .metric-item span { font-size: 0.9rem; color: var(--light-text-color); }
+
+
+        /* FAQ Section */
+        .faq-item { background-color: var(--secondary-color); padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; text-align: left; transition: background-color 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .faq-item:hover { background-color: #3a3a3a; }
+        .faq-question { font-size: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--primary-color);}
+        .faq-question::after { content: '+'; font-size: 1.5rem; transition: transform 0.3s ease; }
+        .faq-question.active::after { content: '-'; transform: rotate(180deg); }
+        .faq-answer { padding-top: 1rem; display: none; color: var(--light-text-color); }
+        .faq-answer p:last-child { margin-bottom: 0; }
+
+
         .final-cta-section { text-align: center; }
         .main-footer { padding: 2rem 0; text-align: center; background-color: #000; }
         .footer-links a { color: var(--primary-color); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease; }
         .footer-links a:hover { color: #fff; }
+
+        /* Scroll-to-Top Button */
+        #scroll-to-top {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 30px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button at the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: var(--primary-color); /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50%; /* Rounded corners */
+            font-size: 1.5rem; /* Increase font size */
+            box-shadow: 0 5px 15px rgba(93, 63, 211, 0.5);
+            transition: background-color 0.3s, transform 0.3s;
+            line-height: 1; /* Adjust for vertical centering */
+        }
+        #scroll-to-top:hover {
+            background-color: #4a33a8; /* Darker on hover */
+            transform: translateY(-5px);
+        }
+
         @media (min-width: 769px) { .socios-grid { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 768px) {
             .main-title { font-size: 2.5rem; }
             .btn-secondary { margin: 1rem 0 0 0; }
             .main-header .btn-primary { margin-bottom: 1rem; }
+            .for-you-list li { font-size: 0.95rem; }
         }
         @media (max-width: 600px) {
             .container { padding: 0 1rem; }
             .cta-buttons { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+            .section-title { font-size: 2rem; }
+            .main-title { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .service-card h4 { font-size: 1.2rem; }
+            .metric-item strong { font-size: 1.5rem; }
+            .metric-item span { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -126,6 +192,24 @@
                 </div>
             </div>
         </section>
+
+        <section class="for-you-section" id="para-quien">
+            <div class="container text-center">
+                <h2 class="section-title">Este Programa Es Para Ti Si...</h2>
+                <p class="subtitle">
+                    Si te identificas con alguno de estos puntos, estás en el lugar correcto. Nuestro programa está diseñado para guiarte.
+                </p>
+                <ul class="for-you-list">
+                    <li>Eres un experto en tu campo pero no sabes cómo monetizar tu conocimiento de forma escalable.</li>
+                    <li>Quieres construir una marca personal sólida y atraer clientes de alto valor sin perseguirlos.</li>
+                    <li>Estás cansado de intercambiar tiempo por dinero y buscas crear sistemas que generen ingresos en automático.</li>
+                    <li>Buscas una comunidad de apoyo y el acompañamiento de mentores con experiencia probada.</li>
+                    <li>Deseas dejar un legado, impactar a más personas y vivir de tu pasión con total libertad.</li>
+                </ul>
+                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg mt-4">¡Sí, Esto Es Para Mí!</a>
+            </div>
+        </section>
+
         <section class="services-section bg-dark" id="servicios">
             <div class="container">
                 <h2 class="section-title">El Método "Conocimiento Exitoso"</h2>
@@ -190,18 +274,48 @@
                 <h2 class="section-title">Conoce a los Socios: Franco y Tomás</h2>
                 <div class="socios-grid">
                     <div class="socio-card">
-                        <img src="[URL_DE_LA_FOTO_DE_FRANCO]" alt="Foto de Franco Scaglione" class="socio-foto">
+                        <img src="https://placehold.co/200x200/5d3fd3/white?text=Franco" alt="Foto de Franco Scaglione" class="socio-foto">
                         <h3>Franco Scaglione</h3>
                         <h4>Licenciado en Negocios Digitales y Estratega de Crecimiento</h4>
                         <p>Como CEO de Myleads.ai, Franco es un experto en la creación de contenido de alto impacto y en el diseño de estrategias para escalar negocios de manera exponencial. Su experiencia en el manejo de comunidades de más de 30 mil miembros activos demuestra su habilidad para entender a la audiencia y construir marcas que generan autoridad.</p>
                     </div>
                     <div class="socio-card">
-                        <img src="[URL_DE_LA_FOTO_DE_TOMÁS]" alt="Foto de Tomás Heredia" class="socio-foto">
+                        <img src="https://placehold.co/200x200/5d3fd3/white?text=Tomas" alt="Foto de Tomás Heredia" class="socio-foto">
                         <h3>Tomás Heredia</h3>
                         <h4>Experto en Marketing Digital y Automatizaciones</h4>
                         <p>Tomás es el especialista en marketing digital encargado de transformar prospectos en clientes. Con un profundo conocimiento en el diseño de embudos de venta y en herramientas de automatización, se enfoca en crear sistemas que trabajen por ti 24/7 para generar leads de alta calidad y maximizar tus conversiones de forma constante.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="success-cases-section" id="casos-exito">
+            <div class="container text-center">
+                <h2 class="section-title">Resultados que Hablan por Sí Mismos</h2>
+                <p class="subtitle">
+                    Nuestros clientes han transformado su conocimiento en negocios rentables y escalables. Aquí algunos ejemplos:
+                </p>
+                <div class="success-cases-grid">
+                    <div class="success-card">
+                        <h3>De Emprendedor a Referente del Sector</h3>
+                        <p>Juan S. logró triplicar su facturación en solo 6 meses, pasando de ofrecer servicios individuales a un programa de mentoría grupal altamente demandado.</p>
+                        <div class="metrics">
+                            <div class="metric-item"><strong>x3</strong><span>Facturación</span></div>
+                            <div class="metric-item"><strong>+100</strong><span>Clientes</span></div>
+                        </div>
+                        <p class="client-info mt-4">- Juan S., Consultor de Negocios</p>
+                    </div>
+                    <div class="success-card">
+                        <h3>Libertad Financiera y Más Tiempo Libre</h3>
+                        <p>María L. automatizó gran parte de su proceso de ventas, lo que le permitió dedicar más tiempo a su familia y a la creación de nuevos contenidos sin sacrificar ingresos.</p>
+                        <div class="metrics">
+                            <div class="metric-item"><strong>-50%</strong><span>Horas Trabajadas</span></div>
+                            <div class="metric-item"><strong>+40%</strong><span>Beneficios</span></div>
+                        </div>
+                        <p class="client-info mt-4">- María L., Coach de Vida</p>
+                    </div>
+                </div>
+                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg mt-4">¡Quiero Mis Propios Resultados!</a>
             </div>
         </section>
 
@@ -223,15 +337,60 @@
                 <h2 class="section-title">Preguntas Frecuentes</h2>
                 <div class="faq-item">
                     <div class="faq-question">¿Cómo funciona el programa?</div>
-                    <div class="faq-answer">El programa incluye consultorías grupales, auditorías personalizadas, soporte por chat y acceso a eventos exclusivos.</div>
+                    <div class="faq-answer">
+                        <p>Nuestro programa "Conocimiento Exitoso" está diseñado para guiarte paso a paso. Incluye:</p>
+                        <ul>
+                            <li>Consultorías grupales en vivo semanales con Franco y Tomás.</li>
+                            <li>Auditorías personalizadas de tu negocio para ajustar procesos y estrategias.</li>
+                            <li>Reuniones de revisión de progreso a los 45 días.</li>
+                            <li>Soporte 1 a 1 por chat privado con nuestros consultores.</li>
+                            <li>Más de 20 horas de reuniones semanales con expertos en diversas áreas (anuncios, prospección, ventas, etc.).</li>
+                            <li>Acceso a eventos anuales exclusivos con los fundadores y el equipo.</li>
+                        </ul>
+                        <p>Está pensado para darte el acompañamiento y las herramientas necesarias para escalar tu conocimiento.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Quiénes pueden participar?</div>
-                    <div class="faq-answer">Cualquier emprendedor, coach, consultor o profesional que quiera escalar su negocio con su conocimiento.</div>
+                    <div class="faq-answer">
+                        <p>Este programa es ideal para emprendedores, coaches, consultores, formadores y profesionales que ya tienen un conocimiento o habilidad especializada y desean transformarlo en un negocio online de alto impacto.</p>
+                        <p>Si te sientes estancado, luchas por conseguir clientes de forma consistente o quieres escalar tus ingresos sin sacrificar tu tiempo, este programa es para ti.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">¿Hay garantía de resultados?</div>
-                    <div class="faq-answer">Aplicamos estrategias probadas, pero el éxito depende de la acción y compromiso de cada participante.</div>
+                    <div class="faq-question">¿Qué tipo de resultados puedo esperar?</div>
+                    <div class="faq-answer">
+                        <p>Nuestros clientes han logrado:</p>
+                        <ul>
+                            <li>Duplicar y triplicar su facturación en pocos meses.</li>
+                            <li>Crear sistemas de ventas automatizados que trabajan 24/7.</li>
+                            <li>Aumentar su impacto y alcance, posicionándose como referentes en su nicho.</li>
+                            <li>Liberar tiempo personal al optimizar procesos y delegar tareas.</li>
+                            <li>Construir ofertas de alto valor que atraen a clientes ideales.</li>
+                        </ul>
+                        <p>Si bien los resultados varían según el compromiso y la aplicación, te proporcionamos una metodología probada y el soporte constante para que alcances tus metas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Cuánto tiempo dura el programa?</div>
+                    <div class="faq-answer">
+                        <p>El programa tiene una duración inicial de 3 meses, durante los cuales recibirás todas las consultorías, auditorías y el soporte intensivo. Sin embargo, muchos de nuestros miembros eligen continuar con nosotros en modalidades avanzadas para seguir escalando sus resultados a largo plazo.</p>
+                        <p>Nuestra meta es que construyas un negocio sostenible, no una solución rápida.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué diferencia a Myleads.ai de otros programas?</div>
+                    <div class="faq-answer">
+                        <p>Nos diferenciamos en varios puntos clave:</p>
+                        <ul>
+                            <li><strong>Enfoque Práctico y Personalizado:</strong> No solo enseñamos teoría, te ayudamos a implementar las estrategias en tu negocio específico.</li>
+                            <li><strong>Soporte Directo de Fundadores:</strong> Franco y Tomás están activamente involucrados en las consultorías y el soporte.</li>
+                            <li><strong>Comunidad de Alto Nivel:</strong> Te conectarás con otros emprendedores ambiciosos y aprenderás de sus experiencias.</li>
+                            <li><strong>Metodología Integral:</strong> Cubrimos desde la oferta, pasando por embudos y automatizaciones, hasta la atracción y cierre de clientes.</li>
+                            <li><strong>Resultados Medibles:</strong> Nos enfocamos en métricas claras para asegurar tu crecimiento.</li>
+                        </ul>
+                        <p>No somos un curso más; somos una mentoría y una comunidad que impulsa tu éxito.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -251,23 +410,62 @@
         </div>
     </footer>
 
+    <button onclick="topFunction()" id="scroll-to-top" title="Volver arriba">↑</button>
+
     <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // FAQ accordion functionality with active class for icon
       document.querySelectorAll(".faq-question").forEach(q => {
         q.addEventListener("click", function() {
           const answer = this.nextElementSibling;
-          answer.style.display = answer.style.display === "block" ? "none" : "block";
-        });
-      });
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-          const targetId = this.getAttribute("href");
-          if (document.querySelector(targetId)) {
-            e.preventDefault();
-            document.querySelector(targetId).scrollIntoView({ behavior: "smooth" });
+          const isActive = this.classList.contains("active");
+
+          // Close all open answers and remove active class
+          document.querySelectorAll(".faq-question").forEach(otherQ => {
+            otherQ.classList.remove("active");
+            otherQ.nextElementSibling.style.display = "none";
+          });
+
+          // If this one wasn't active, open it
+          if (!isActive) {
+            this.classList.add("active");
+            answer.style.display = "block";
           }
         });
       });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") { // Handle case for href="#" to prevent unexpected scrolling
+            e.preventDefault();
+            return;
+          }
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Scroll-to-Top Button logic
+      const scrollToTopBtn = document.getElementById("scroll-to-top");
+      window.onscroll = function() { scrollFunction() };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          scrollToTopBtn.style.display = "block";
+        } else {
+          scrollToTopBtn.style.display = "none";
+        }
+      }
+
+      window.topFunction = function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
     });
     </script>
 
