@@ -1,0 +1,532 @@
+<title>Prospección MyLeads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  :root{
+    --ground:#F2F5F5;
+    --surface:#FFFFFF;
+    --surface-2:#E9EFEF;
+    --ink:#0F1C1E;
+    --muted:#5B6E6F;
+    --faint:#849798;
+    --line:#D8E1E1;
+    --accent:#0B6E6E;
+    --accent-soft:#D6EBE9;
+    --on-accent:#F2F5F5;
+    --hot:#A8411C;
+    --hot-soft:#F6E3DA;
+    --warm:#7D6011;
+    --warm-soft:#F3EBD4;
+    --cool:#456570;
+    --cool-soft:#E2EAEC;
+    --shadow:0 1px 2px rgba(15,28,30,.06);
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0B1416;
+      --surface:#111E20;
+      --surface-2:#18282A;
+      --ink:#E7EFEF;
+      --muted:#9AADAE;
+      --faint:#6F8688;
+      --line:#22383A;
+      --accent:#4FBDB4;
+      --accent-soft:#11302F;
+      --on-accent:#08201F;
+      --hot:#E8916A;
+      --hot-soft:#35211A;
+      --warm:#D8B65B;
+      --warm-soft:#302811;
+      --cool:#8FB0B9;
+      --cool-soft:#1A2A2E;
+      --shadow:0 1px 2px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0B1416;
+    --surface:#111E20;
+    --surface-2:#18282A;
+    --ink:#E7EFEF;
+    --muted:#9AADAE;
+    --faint:#6F8688;
+    --line:#22383A;
+    --accent:#4FBDB4;
+    --accent-soft:#11302F;
+    --on-accent:#08201F;
+    --hot:#E8916A;
+    --hot-soft:#35211A;
+    --warm:#D8B65B;
+    --warm-soft:#302811;
+    --cool:#8FB0B9;
+    --cool-soft:#1A2A2E;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.5;
+    margin:0;
+    padding-inline:20px;
+    padding-block:0 64px;
+  }
+  .wrap{max-width:1120px;margin-inline:auto}
+
+  /* ---------- masthead ---------- */
+  header.mast{
+    padding-block:40px 24px;
+    border-bottom:2px solid var(--ink);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .mast h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(28px,4.4vw,42px);
+    letter-spacing:-.02em;
+    line-height:1.05;
+    margin:0;
+    text-wrap:balance;
+  }
+  .mast p{
+    margin:8px 0 0;
+    color:var(--muted);
+    max-width:56ch;
+    font-size:15px;
+  }
+  .stamp{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--faint);
+    text-align:right;
+    line-height:1.7;
+  }
+  .stamp b{color:var(--ink);font-weight:600}
+
+  /* ---------- summary ---------- */
+  .summary{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  .stat{padding:18px 20px 18px 0}
+  .stat + .stat{border-left:1px solid var(--line);padding-left:20px}
+  .stat .n{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:26px;
+    font-variant-numeric:tabular-nums;
+    line-height:1.1;
+    display:block;
+  }
+  .stat .k{
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:.02em;
+    display:block;
+    margin-top:4px;
+  }
+
+  /* ---------- controls ---------- */
+  .controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px 22px;
+    align-items:flex-end;
+    padding-block:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .field{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .field > label,.chipset > span.legend{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--faint);
+  }
+  select,input[type="search"]{
+    font-family:var(--body);
+    font-size:14px;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:7px 9px;
+    min-width:170px;
+    max-width:100%;
+  }
+  input[type="search"]{min-width:210px}
+  select:focus-visible,input:focus-visible,button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+  .chipset{display:flex;flex-direction:column;gap:5px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.03em;
+    padding:6px 11px;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--muted);
+    border-radius:3px;
+    cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:var(--on-accent);
+  }
+
+  .count{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--muted);
+    padding-block:12px;
+    letter-spacing:.03em;
+  }
+
+  /* ---------- lead rows ---------- */
+  .list{display:flex;flex-direction:column}
+  .lead{
+    display:grid;
+    grid-template-columns:52px minmax(0,1.55fr) minmax(0,1.9fr) 120px;
+    gap:0 20px;
+    align-items:start;
+    padding:16px 16px 16px 14px;
+    border-bottom:1px solid var(--line);
+    border-left:3px solid var(--cool);
+    background:var(--surface);
+  }
+  .lead.sev-hot{border-left-color:var(--hot)}
+  .lead.sev-warm{border-left-color:var(--warm)}
+  .lead.sev-cool{border-left-color:var(--cool)}
+
+  .score{
+    font-family:var(--mono);
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+    padding-top:1px;
+  }
+  .score b{display:block;font-size:19px;font-weight:600;line-height:1.1}
+  .score span{
+    display:block;
+    font-size:10px;
+    letter-spacing:.08em;
+    color:var(--faint);
+    margin-top:3px;
+  }
+
+  .who h3{
+    font-family:var(--display);
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:-.005em;
+    margin:0;
+    line-height:1.25;
+    text-wrap:balance;
+  }
+  .where{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:3px;
+  }
+  .where em{font-style:normal;color:var(--faint)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .tag{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:3px 7px;
+    border-radius:2px;
+    background:var(--cool-soft);
+    color:var(--cool);
+    white-space:nowrap;
+  }
+  .tag.hot{background:var(--hot-soft);color:var(--hot)}
+  .tag.warm{background:var(--warm-soft);color:var(--warm)}
+  .tag.ghost{background:transparent;color:var(--faint);border:1px solid var(--line)}
+  .tag.unclaimed{background:var(--hot-soft);color:var(--hot)}
+
+  .hook{
+    font-size:14.5px;
+    color:var(--muted);
+    line-height:1.5;
+    margin:0;
+  }
+  .hook strong{color:var(--ink);font-weight:600}
+
+  .reach{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:7px;
+    text-align:right;
+  }
+  .metric{
+    font-family:var(--mono);
+    font-size:12.5px;
+    font-variant-numeric:tabular-nums;
+    color:var(--muted);
+    line-height:1.4;
+  }
+  .metric b{color:var(--ink);font-weight:600}
+  a.call{
+    font-family:var(--mono);
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid var(--accent-soft);
+    padding-bottom:1px;
+    white-space:nowrap;
+  }
+  a.call:hover{border-bottom-color:var(--accent)}
+  a.site{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--faint);
+    text-decoration:none;
+    word-break:break-all;
+  }
+  a.site:hover{color:var(--accent)}
+  .pending{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.05em;
+    color:var(--faint);
+  }
+
+  .empty{
+    padding:44px 0;
+    color:var(--muted);
+    font-size:15px;
+  }
+
+  footer.note{
+    margin-top:36px;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-size:13.5px;
+    max-width:70ch;
+  }
+  footer.note p{margin:0 0 10px}
+  footer.note b{color:var(--ink)}
+
+  @media (max-width:860px){
+    .lead{
+      grid-template-columns:46px minmax(0,1fr);
+      gap:4px 16px;
+    }
+    .hook{grid-column:2;margin-top:10px}
+    .reach{
+      grid-column:2;
+      align-items:flex-start;
+      text-align:left;
+      margin-top:12px;
+    }
+    .stat{padding-right:14px}
+    .stat + .stat{padding-left:14px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <h1>Prospección MyLeads</h1>
+      <p>Negocios de ticket alto cuya demanda ya está probada en Google y cuya presencia digital
+         no la acompaña. Ordenados por esa brecha.</p>
+    </div>
+    <div class="stamp">
+      Corte <b>11 sep 2026</b><br>
+      Fuente <b>Google Business Profile</b><br>
+      Ticket mínimo <b>500 USD</b>
+    </div>
+  </header>
+
+  <section class="summary" id="summary"></section>
+
+  <section class="controls">
+    <div class="field">
+      <label for="q">Buscar</label>
+      <input type="search" id="q" placeholder="Empresa, ciudad o rubro">
+    </div>
+    <div class="field">
+      <label for="pais">País</label>
+      <select id="pais"></select>
+    </div>
+    <div class="field">
+      <label for="grupo">Rubro</label>
+      <select id="grupo"></select>
+    </div>
+    <div class="chipset">
+      <span class="legend">Prioridad</span>
+      <div class="chips" id="prio"></div>
+    </div>
+    <div class="chipset">
+      <span class="legend">Dato listo para llamar</span>
+      <div class="chips" id="grado"></div>
+    </div>
+    <div class="chipset">
+      <span class="legend">Filtro rápido</span>
+      <div class="chips">
+        <button class="chip" type="button" id="soloSinWeb" aria-pressed="false">Sin sitio propio</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="count" id="count"></p>
+  <div class="list" id="list"></div>
+
+  <footer class="note">
+    <p><b>Cómo leer la barra de color.</b> El borde izquierdo marca el hueco digital:
+      naranja es sin sitio web, ocre es solo Instagram o Facebook o un booking de terceros,
+      gris verdoso es que ya tienen sitio propio.</p>
+    <p><b>Grado del dato.</b> A significa teléfono, rating y ficha verificados, se puede llamar hoy.
+      B significa canal digital verificado pero falta el teléfono. C significa que está identificada
+      la empresa y el dominio, falta todo el contacto.</p>
+    <p><b>Faltan mercados.</b> México sin Cancún ni el norte, Colombia, Chile, Panamá, Uruguay,
+      Tailandia y buena parte de Europa y Estados Unidos siguen sin cubrir, igual que
+      concesionarias, constructoras, estudios jurídicos y gastronomía. El detalle y el costo
+      de completarlos está en el repositorio.</p>
+  </footer>
+</div>
+
+<script>
+const LEADS = /*__DATA__*/;
+
+const state = {q:"", pais:"", grupo:"", prio:new Set(), grado:new Set(), sinWeb:false};
+
+const el = id => document.getElementById(id);
+const uniq = k => [...new Set(LEADS.map(l => l[k]))].sort((a,b)=>a.localeCompare(b,"es"));
+
+function fillSelect(node, label, values){
+  node.innerHTML = "";
+  const all = document.createElement("option");
+  all.value = ""; all.textContent = label;
+  node.append(all);
+  values.forEach(v => {
+    const o = document.createElement("option");
+    o.value = v; o.textContent = v;
+    node.append(o);
+  });
+}
+
+function buildChips(node, values, key){
+  values.forEach(v => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = v;
+    b.setAttribute("aria-pressed","false");
+    b.addEventListener("click", () => {
+      const on = b.getAttribute("aria-pressed") === "true";
+      b.setAttribute("aria-pressed", String(!on));
+      on ? state[key].delete(v) : state[key].add(v);
+      render();
+    });
+    node.append(b);
+  });
+}
+
+function matches(l){
+  if(state.pais && l.pais !== state.pais) return false;
+  if(state.grupo && l.grupo !== state.grupo) return false;
+  if(state.prio.size && !state.prio.has(l.prio)) return false;
+  if(state.grado.size && !state.grado.has(l.grado)) return false;
+  if(state.sinWeb && l.sev === "cool") return false;
+  if(state.q){
+    const hay = (l.empresa+" "+l.ciudad+" "+l.rubro+" "+l.pais+" "+l.hook).toLowerCase();
+    if(!hay.includes(state.q)) return false;
+  }
+  return true;
+}
+
+function summary(){
+  const sinWeb = LEADS.filter(l => l.sev !== "cool").length;
+  const listos = LEADS.filter(l => l.grado === "A").length;
+  const p1 = LEADS.filter(l => l.prio === "P1").length;
+  const stats = [
+    [LEADS.length, "leads calificados"],
+    [listos, "con teléfono verificado"],
+    [sinWeb, "sin sitio propio"],
+    [p1, "prioridad uno"],
+    [new Set(LEADS.map(l=>l.pais)).size, "países"],
+  ];
+  el("summary").innerHTML = stats.map(([n,k]) =>
+    `<div class="stat"><span class="n">${n}</span><span class="k">${k}</span></div>`).join("");
+}
+
+function row(l){
+  const tags = [`<span class="tag ${l.sev}">${l.canalLabel}</span>`,
+                `<span class="tag ghost">${l.grupo}</span>`];
+  if(l.reclamada === "no") tags.push(`<span class="tag unclaimed">Ficha sin reclamar</span>`);
+  tags.push(`<span class="tag ghost">Dato ${l.grado}</span>`);
+
+  const site = /\./.test(l.canal) && !/^Solo|^SIN/.test(l.canal)
+    ? `<a class="site" href="https://${l.canal.replace(/^https?:\/\//,"")}" target="_blank" rel="noopener">${l.canal}</a>` : "";
+
+  const metric = l.resenas
+    ? `<span class="metric"><b>${l.rating}</b> · ${l.resenas} reseñas</span>` : "";
+
+  const call = l.tel
+    ? `<a class="call" href="tel:${l.tel.replace(/[^+\d]/g,"")}">${l.tel}</a>`
+    : `<span class="pending">Falta teléfono</span>`;
+
+  return `<article class="lead sev-${l.sev}">
+    <div class="score"><b>${l.score}</b><span>${l.prio}</span></div>
+    <div class="who">
+      <h3>${l.empresa}</h3>
+      <div class="where">${l.ciudad} <em>·</em> ${l.pais}</div>
+      <div class="tags">${tags.join("")}</div>
+    </div>
+    <p class="hook">${l.hook}</p>
+    <div class="reach">${metric}${call}${site}</div>
+  </article>`;
+}
+
+function render(){
+  const out = LEADS.filter(matches);
+  el("list").innerHTML = out.length
+    ? out.map(row).join("")
+    : `<p class="empty">Ningún lead cumple esos filtros. Probá aflojando prioridad o rubro.</p>`;
+  el("count").textContent = out.length === LEADS.length
+    ? `Mostrando los ${LEADS.length} leads, de mayor a menor brecha.`
+    : `${out.length} de ${LEADS.length} leads.`;
+}
+
+fillSelect(el("pais"), "Todos los países", uniq("pais"));
+fillSelect(el("grupo"), "Todos los rubros", uniq("grupo"));
+buildChips(el("prio"), ["P1","P2","P3"], "prio");
+buildChips(el("grado"), ["A","B","C"], "grado");
+
+el("pais").addEventListener("change", e => { state.pais = e.target.value; render(); });
+el("grupo").addEventListener("change", e => { state.grupo = e.target.value; render(); });
+el("q").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+el("soloSinWeb").addEventListener("click", e => {
+  state.sinWeb = !state.sinWeb;
+  e.currentTarget.setAttribute("aria-pressed", String(state.sinWeb));
+  render();
+});
+
+summary();
+render();
+</script>

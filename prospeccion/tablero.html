@@ -1,0 +1,532 @@
+<title>Prospección MyLeads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  :root{
+    --ground:#F2F5F5;
+    --surface:#FFFFFF;
+    --surface-2:#E9EFEF;
+    --ink:#0F1C1E;
+    --muted:#5B6E6F;
+    --faint:#849798;
+    --line:#D8E1E1;
+    --accent:#0B6E6E;
+    --accent-soft:#D6EBE9;
+    --on-accent:#F2F5F5;
+    --hot:#A8411C;
+    --hot-soft:#F6E3DA;
+    --warm:#7D6011;
+    --warm-soft:#F3EBD4;
+    --cool:#456570;
+    --cool-soft:#E2EAEC;
+    --shadow:0 1px 2px rgba(15,28,30,.06);
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0B1416;
+      --surface:#111E20;
+      --surface-2:#18282A;
+      --ink:#E7EFEF;
+      --muted:#9AADAE;
+      --faint:#6F8688;
+      --line:#22383A;
+      --accent:#4FBDB4;
+      --accent-soft:#11302F;
+      --on-accent:#08201F;
+      --hot:#E8916A;
+      --hot-soft:#35211A;
+      --warm:#D8B65B;
+      --warm-soft:#302811;
+      --cool:#8FB0B9;
+      --cool-soft:#1A2A2E;
+      --shadow:0 1px 2px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0B1416;
+    --surface:#111E20;
+    --surface-2:#18282A;
+    --ink:#E7EFEF;
+    --muted:#9AADAE;
+    --faint:#6F8688;
+    --line:#22383A;
+    --accent:#4FBDB4;
+    --accent-soft:#11302F;
+    --on-accent:#08201F;
+    --hot:#E8916A;
+    --hot-soft:#35211A;
+    --warm:#D8B65B;
+    --warm-soft:#302811;
+    --cool:#8FB0B9;
+    --cool-soft:#1A2A2E;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.5;
+    margin:0;
+    padding-inline:20px;
+    padding-block:0 64px;
+  }
+  .wrap{max-width:1120px;margin-inline:auto}
+
+  /* ---------- masthead ---------- */
+  header.mast{
+    padding-block:40px 24px;
+    border-bottom:2px solid var(--ink);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .mast h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(28px,4.4vw,42px);
+    letter-spacing:-.02em;
+    line-height:1.05;
+    margin:0;
+    text-wrap:balance;
+  }
+  .mast p{
+    margin:8px 0 0;
+    color:var(--muted);
+    max-width:56ch;
+    font-size:15px;
+  }
+  .stamp{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--faint);
+    text-align:right;
+    line-height:1.7;
+  }
+  .stamp b{color:var(--ink);font-weight:600}
+
+  /* ---------- summary ---------- */
+  .summary{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  .stat{padding:18px 20px 18px 0}
+  .stat + .stat{border-left:1px solid var(--line);padding-left:20px}
+  .stat .n{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:26px;
+    font-variant-numeric:tabular-nums;
+    line-height:1.1;
+    display:block;
+  }
+  .stat .k{
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:.02em;
+    display:block;
+    margin-top:4px;
+  }
+
+  /* ---------- controls ---------- */
+  .controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px 22px;
+    align-items:flex-end;
+    padding-block:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .field{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .field > label,.chipset > span.legend{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--faint);
+  }
+  select,input[type="search"]{
+    font-family:var(--body);
+    font-size:14px;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:7px 9px;
+    min-width:170px;
+    max-width:100%;
+  }
+  input[type="search"]{min-width:210px}
+  select:focus-visible,input:focus-visible,button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+  .chipset{display:flex;flex-direction:column;gap:5px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.03em;
+    padding:6px 11px;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--muted);
+    border-radius:3px;
+    cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:var(--on-accent);
+  }
+
+  .count{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--muted);
+    padding-block:12px;
+    letter-spacing:.03em;
+  }
+
+  /* ---------- lead rows ---------- */
+  .list{display:flex;flex-direction:column}
+  .lead{
+    display:grid;
+    grid-template-columns:52px minmax(0,1.55fr) minmax(0,1.9fr) 120px;
+    gap:0 20px;
+    align-items:start;
+    padding:16px 16px 16px 14px;
+    border-bottom:1px solid var(--line);
+    border-left:3px solid var(--cool);
+    background:var(--surface);
+  }
+  .lead.sev-hot{border-left-color:var(--hot)}
+  .lead.sev-warm{border-left-color:var(--warm)}
+  .lead.sev-cool{border-left-color:var(--cool)}
+
+  .score{
+    font-family:var(--mono);
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+    padding-top:1px;
+  }
+  .score b{display:block;font-size:19px;font-weight:600;line-height:1.1}
+  .score span{
+    display:block;
+    font-size:10px;
+    letter-spacing:.08em;
+    color:var(--faint);
+    margin-top:3px;
+  }
+
+  .who h3{
+    font-family:var(--display);
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:-.005em;
+    margin:0;
+    line-height:1.25;
+    text-wrap:balance;
+  }
+  .where{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:3px;
+  }
+  .where em{font-style:normal;color:var(--faint)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .tag{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:3px 7px;
+    border-radius:2px;
+    background:var(--cool-soft);
+    color:var(--cool);
+    white-space:nowrap;
+  }
+  .tag.hot{background:var(--hot-soft);color:var(--hot)}
+  .tag.warm{background:var(--warm-soft);color:var(--warm)}
+  .tag.ghost{background:transparent;color:var(--faint);border:1px solid var(--line)}
+  .tag.unclaimed{background:var(--hot-soft);color:var(--hot)}
+
+  .hook{
+    font-size:14.5px;
+    color:var(--muted);
+    line-height:1.5;
+    margin:0;
+  }
+  .hook strong{color:var(--ink);font-weight:600}
+
+  .reach{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:7px;
+    text-align:right;
+  }
+  .metric{
+    font-family:var(--mono);
+    font-size:12.5px;
+    font-variant-numeric:tabular-nums;
+    color:var(--muted);
+    line-height:1.4;
+  }
+  .metric b{color:var(--ink);font-weight:600}
+  a.call{
+    font-family:var(--mono);
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid var(--accent-soft);
+    padding-bottom:1px;
+    white-space:nowrap;
+  }
+  a.call:hover{border-bottom-color:var(--accent)}
+  a.site{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--faint);
+    text-decoration:none;
+    word-break:break-all;
+  }
+  a.site:hover{color:var(--accent)}
+  .pending{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.05em;
+    color:var(--faint);
+  }
+
+  .empty{
+    padding:44px 0;
+    color:var(--muted);
+    font-size:15px;
+  }
+
+  footer.note{
+    margin-top:36px;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-size:13.5px;
+    max-width:70ch;
+  }
+  footer.note p{margin:0 0 10px}
+  footer.note b{color:var(--ink)}
+
+  @media (max-width:860px){
+    .lead{
+      grid-template-columns:46px minmax(0,1fr);
+      gap:4px 16px;
+    }
+    .hook{grid-column:2;margin-top:10px}
+    .reach{
+      grid-column:2;
+      align-items:flex-start;
+      text-align:left;
+      margin-top:12px;
+    }
+    .stat{padding-right:14px}
+    .stat + .stat{padding-left:14px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <h1>Prospección MyLeads</h1>
+      <p>Negocios de ticket alto cuya demanda ya está probada en Google y cuya presencia digital
+         no la acompaña. Ordenados por esa brecha.</p>
+    </div>
+    <div class="stamp">
+      Corte <b>11 sep 2026</b><br>
+      Fuente <b>Google Business Profile</b><br>
+      Ticket mínimo <b>500 USD</b>
+    </div>
+  </header>
+
+  <section class="summary" id="summary"></section>
+
+  <section class="controls">
+    <div class="field">
+      <label for="q">Buscar</label>
+      <input type="search" id="q" placeholder="Empresa, ciudad o rubro">
+    </div>
+    <div class="field">
+      <label for="pais">País</label>
+      <select id="pais"></select>
+    </div>
+    <div class="field">
+      <label for="grupo">Rubro</label>
+      <select id="grupo"></select>
+    </div>
+    <div class="chipset">
+      <span class="legend">Prioridad</span>
+      <div class="chips" id="prio"></div>
+    </div>
+    <div class="chipset">
+      <span class="legend">Dato listo para llamar</span>
+      <div class="chips" id="grado"></div>
+    </div>
+    <div class="chipset">
+      <span class="legend">Filtro rápido</span>
+      <div class="chips">
+        <button class="chip" type="button" id="soloSinWeb" aria-pressed="false">Sin sitio propio</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="count" id="count"></p>
+  <div class="list" id="list"></div>
+
+  <footer class="note">
+    <p><b>Cómo leer la barra de color.</b> El borde izquierdo marca el hueco digital:
+      naranja es sin sitio web, ocre es solo Instagram o Facebook o un booking de terceros,
+      gris verdoso es que ya tienen sitio propio.</p>
+    <p><b>Grado del dato.</b> A significa teléfono, rating y ficha verificados, se puede llamar hoy.
+      B significa canal digital verificado pero falta el teléfono. C significa que está identificada
+      la empresa y el dominio, falta todo el contacto.</p>
+    <p><b>Faltan mercados.</b> México sin Cancún ni el norte, Colombia, Chile, Panamá, Uruguay,
+      Tailandia y buena parte de Europa y Estados Unidos siguen sin cubrir, igual que
+      concesionarias, constructoras, estudios jurídicos y gastronomía. El detalle y el costo
+      de completarlos está en el repositorio.</p>
+  </footer>
+</div>
+
+<script>
+const LEADS = [{"id": 1, "prio": "P1", "score": 92, "pais": "Argentina", "ciudad": "Vicente Lopez (Florida)", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "Odonto Maipu", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "+549113043-8415", "rating": "3.7", "resenas": "413", "reclamada": "si", "hook": "413 resenas y cero sitio web; rating bajo por atencion. Caso ideal de web + bot de turnos por WhatsApp", "grado": "A", "fuente": "Google Business Profile"}, {"id": 2, "prio": "P1", "score": 91, "pais": "Argentina", "ciudad": "Olivos", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "Ayres Dental", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "+54112400-1485", "rating": "5.0", "resenas": "305", "reclamada": "si", "hook": "5.0 con 305 resenas y sin sitio propio. Toda la conversion depende del DM de Instagram", "grado": "A", "fuente": "Google Business Profile"}, {"id": 3, "prio": "P1", "score": 90, "pais": "Argentina", "ciudad": "CABA (Colegiales)", "rubro": "Clinica estetica / dermatologia", "grupo": "Estética y dermatología", "empresa": "Tosiponti Skin Longevity", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "+54114740-0102", "rating": "4.9", "resenas": "884", "reclamada": "si", "hook": "884 resenas, dermatologia de precision, ticket alto y sin web propia", "grado": "A", "fuente": "Google Business Profile"}, {"id": 4, "prio": "P1", "score": 88, "pais": "Argentina", "ciudad": "Olivos", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "Coin", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "+54114799-3215", "rating": "2.3", "resenas": "347", "reclamada": "no", "hook": "Ficha sin reclamar y rating 2.3 con 347 resenas. Urgencia reputacional + captacion", "grado": "A", "fuente": "Google Business Profile"}, {"id": 5, "prio": "P1", "score": 86, "pais": "Argentina", "ciudad": "San Isidro", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "San Isidro Labrador Dental Center", "canal": "Solo Facebook", "canalLabel": "Solo Facebook", "sev": "warm", "tel": "+54112467-2026", "rating": "2.7", "resenas": "247", "reclamada": "no", "hook": "Ficha sin reclamar, solo pagina de Facebook, rating 2.7. Rehacer presencia completa", "grado": "A", "fuente": "Google Business Profile"}, {"id": 6, "prio": "P1", "score": 85, "pais": "Argentina", "ciudad": "Martinez", "rubro": "Odontologia premium", "grupo": "Odontología", "empresa": "Esthetic Dentistry Dental Juri", "canal": "esteticajuri.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+549112594-5555", "rating": "4.8", "resenas": "1836", "reclamada": "si", "hook": "1836 resenas, implantologia + estetica medica. Volumen de consultas que justifica automatizacion", "grado": "A", "fuente": "Google Business Profile"}, {"id": 29, "prio": "P1", "score": 84, "pais": "Argentina", "ciudad": "San Isidro", "rubro": "Medicina estetica", "grupo": "Estética y dermatología", "empresa": "Mingoni Centro de Medicina Estetica", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Medicina estetica en San Isidro sin sitio web. Conversion 100% por DM", "grado": "B", "fuente": "BirdSift"}, {"id": 30, "prio": "P1", "score": 83, "pais": "Argentina", "ciudad": "San Isidro", "rubro": "Medicina estetica", "grupo": "Estética y dermatología", "empresa": "LAE Medicina Estetica", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sobre Av. del Libertador, sin sitio propio", "grado": "B", "fuente": "BirdSift"}, {"id": 7, "prio": "P1", "score": 82, "pais": "Argentina", "ciudad": "CABA (Belgrano)", "rubro": "Medicina estetica", "grupo": "Estética y dermatología", "empresa": "Silvana Dato - Centro Medico", "canal": "silvanadato.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54114774-7279", "rating": "4.9", "resenas": "1088", "reclamada": "si", "hook": "1088 resenas, ticket alto, sitio con poca profundidad comercial", "grado": "A", "fuente": "Google Business Profile"}, {"id": 31, "prio": "P1", "score": 82, "pais": "Argentina", "ciudad": "Vicente Lopez", "rubro": "Dermatologia estetica", "grupo": "Estética y dermatología", "empresa": "Dr. Alejandro Leone - Dermatologia Quirurgica & Laser", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Dermatologia quirurgica y laser sin web. Ticket alto", "grado": "B", "fuente": "BirdSift"}, {"id": 8, "prio": "P1", "score": 80, "pais": "Argentina", "ciudad": "CABA (Caballito)", "rubro": "Cirugia plastica / estetica", "grupo": "Estética y dermatología", "empresa": "Hoogstra Centros Medicos", "canal": "doctorhoogstra.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54114901-6690", "rating": "4.6", "resenas": "719", "reclamada": "si", "hook": "Cirugia plastica y laser, ticket muy alto, multiples sedes", "grado": "A", "fuente": "Google Business Profile"}, {"id": 9, "prio": "P1", "score": 80, "pais": "Argentina", "ciudad": "CABA (Recoleta)", "rubro": "Clinica estetica", "grupo": "Estética y dermatología", "empresa": "Centro Chouela", "canal": "chouela.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54112256-6757", "rating": "2.9", "resenas": "234", "reclamada": "si", "hook": "Rating 2.9 con 234 resenas: falla de atencion y seguimiento. Angulo directo para bot + CRM", "grado": "A", "fuente": "Google Business Profile"}, {"id": 32, "prio": "P1", "score": 80, "pais": "Argentina", "ciudad": "Martinez", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "EM PIEL ESTUDIO", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Estudio de piel sin sitio web", "grado": "B", "fuente": "BirdSift"}, {"id": 33, "prio": "P1", "score": 79, "pais": "Argentina", "ciudad": "San Isidro", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "Dr Beauty San Isidro", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sin web ni Instagram enlazado en la ficha", "grado": "B", "fuente": "BirdSift"}, {"id": 10, "prio": "P1", "score": 78, "pais": "Argentina", "ciudad": "San Isidro / Virreyes", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "Dental Total (red)", "canal": "dentaltotal.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+54800-777-1919", "rating": "4.9", "resenas": "520", "reclamada": "si", "hook": "Red con multiples sedes y linea 0800. Alto volumen de turnos para automatizar", "grado": "A", "fuente": "Google Business Profile"}, {"id": 34, "prio": "P1", "score": 78, "pais": "Argentina", "ciudad": "Martinez", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "Estetica Martinez", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sin presencia digital propia en zona de alto poder adquisitivo", "grado": "B", "fuente": "BirdSift"}, {"id": 35, "prio": "P1", "score": 78, "pais": "Argentina", "ciudad": "Olivos", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "Estetica Martinez (Olivos)", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Segunda sede sin web", "grado": "B", "fuente": "BirdSift"}, {"id": 66, "prio": "P1", "score": 78, "pais": "Mexico", "ciudad": "Riviera Maya (Xpu-Ha), Q. Roo", "rubro": "Hotel boutique", "grupo": "Hotelería boutique", "empresa": "Hotel Esencia", "canal": "hotelesencia.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Hotel boutique de lujo: reservas directas y concierge por WhatsApp", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 36, "prio": "P1", "score": 77, "pais": "Argentina", "ciudad": "Vicente Lopez", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "ESTILO UP Vicente Lopez", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Centro estetico sin web", "grado": "B", "fuente": "BirdSift"}, {"id": 37, "prio": "P1", "score": 77, "pais": "Argentina", "ciudad": "Olivos", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "Dr Beauty Vicente Lopez", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sobre Av. del Libertador, sin web", "grado": "B", "fuente": "BirdSift"}, {"id": 11, "prio": "P2", "score": 76, "pais": "Argentina", "ciudad": "San Fernando (Victoria)", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "Odontologia Northdent", "canal": "odontologianorthdent.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54116362-7695", "rating": "4.9", "resenas": "428", "reclamada": "si", "hook": "4.9 con 428 resenas en Zona Norte. Sitio basico sin captacion", "grado": "A", "fuente": "Google Business Profile"}, {"id": 67, "prio": "P1", "score": 76, "pais": "Mexico", "ciudad": "Tulum, Q. Roo", "rubro": "Hotel boutique", "grupo": "Hotelería boutique", "empresa": "Casa Malca", "canal": "casamalca.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Hotel boutique de arte contemporaneo, ticket muy alto", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 12, "prio": "P2", "score": 75, "pais": "Argentina", "ciudad": "CABA (Nunez)", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "Agustina Losardo Odontologia", "canal": "agustinalosardoodontologia.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54114198-3388", "rating": "5.0", "resenas": "414", "reclamada": "si", "hook": "5.0 con 414 resenas. Marca personal fuerte, sitio sin embudo", "grado": "A", "fuente": "Google Business Profile"}, {"id": 13, "prio": "P2", "score": 74, "pais": "Argentina", "ciudad": "CABA (Caballito)", "rubro": "Medicina estetica", "grupo": "Estética y dermatología", "empresa": "Beautyderm - Medical Aesthetic Center", "canal": "beautyderm.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+5448527878", "rating": "4.8", "resenas": "506", "reclamada": "si", "hook": "506 resenas y 391 fotos: mucha demanda, sin sistema de captacion", "grado": "A", "fuente": "Google Business Profile"}, {"id": 38, "prio": "P2", "score": 74, "pais": "Argentina", "ciudad": "Vicente Lopez", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "Estetica Von", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sin sitio web", "grado": "B", "fuente": "BirdSift"}, {"id": 39, "prio": "P2", "score": 74, "pais": "Argentina", "ciudad": "Vicente Lopez", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "Lestetica", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sin sitio web", "grado": "B", "fuente": "BirdSift"}, {"id": 40, "prio": "P2", "score": 73, "pais": "Argentina", "ciudad": "Florida (Vicente Lopez)", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "Coty Estetica", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sin sitio web", "grado": "B", "fuente": "BirdSift"}, {"id": 14, "prio": "P2", "score": 72, "pais": "Argentina", "ciudad": "Vicente Lopez", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "City Dent", "canal": "citydent.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+54112669-6317", "rating": "4.6", "resenas": "254", "reclamada": "si", "hook": "Todas las especialidades incluidas implantes. Sitio minimo", "grado": "A", "fuente": "Google Business Profile"}, {"id": 15, "prio": "P2", "score": 72, "pais": "Argentina", "ciudad": "CABA (Palermo)", "rubro": "Clinica capilar / tricologia", "grupo": "Clínica capilar", "empresa": "Dr. Miguel Marti - Dermatologo", "canal": "drmiguelmarti.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+549116619-7156", "rating": "4.6", "resenas": "162", "reclamada": "si", "hook": "Tricologia y recuperacion capilar: rubro pedido, ticket alto, lider de opinion regional", "grado": "A", "fuente": "Google Business Profile"}, {"id": 41, "prio": "P2", "score": 72, "pais": "Argentina", "ciudad": "Martinez", "rubro": "Cirugia estetica / dermatologia", "grupo": "Estética y dermatología", "empresa": "Clinica Ferreira", "canal": "clinicaferreira.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Cirugia estetica en Martinez, sitio desactualizado", "grado": "B", "fuente": "BirdSift"}, {"id": 51, "prio": "P2", "score": 72, "pais": "Emiratos Arabes Unidos", "ciudad": "Dubai", "rubro": "Real estate de lujo", "grupo": "Real estate", "empresa": "KAYE & CO.", "canal": "kayeandco.ae", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Boutique de lujo con 15 anos, foco en compradores internacionales", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 42, "prio": "P2", "score": 71, "pais": "Argentina", "ciudad": "Martinez", "rubro": "Medicina estetica", "grupo": "Estética y dermatología", "empresa": "FDN Medicina Estetica (Dra. Flor Di Napoli)", "canal": "draflordinapoli.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Marca personal medica, sitio sin captacion", "grado": "B", "fuente": "BirdSift"}, {"id": 16, "prio": "P2", "score": 70, "pais": "Argentina", "ciudad": "CABA (Recoleta)", "rubro": "Dermatologia estetica", "grupo": "Estética y dermatología", "empresa": "Dra. Paniego Dermatologia", "canal": "draflorenciapaniego.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54113157-4922", "rating": "4.5", "resenas": "373", "reclamada": "si", "hook": "373 resenas en Recoleta. Sitio de una pagina", "grado": "A", "fuente": "Google Business Profile"}, {"id": 17, "prio": "P2", "score": 70, "pais": "Argentina", "ciudad": "CABA (Palermo)", "rubro": "Medicina estetica", "grupo": "Estética y dermatología", "empresa": "List Medical Center", "canal": "centromedicolist.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+54114829-0243", "rating": "4.8", "resenas": "328", "reclamada": "si", "hook": "Medicina estetica + nutricion clinica, ticket alto", "grado": "A", "fuente": "Google Business Profile"}, {"id": 45, "prio": "P2", "score": 70, "pais": "Argentina", "ciudad": "CABA (Palermo)", "rubro": "Estudio contable", "grupo": "Estudio contable", "empresa": "Contador 360", "canal": "Solo Instagram", "canalLabel": "Solo Instagram", "sev": "warm", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Estudio contable que capta por Instagram sin sitio ni embudo", "grado": "B", "fuente": "BirdSift"}, {"id": 52, "prio": "P2", "score": 70, "pais": "Emiratos Arabes Unidos", "ciudad": "Dubai", "rubro": "Real estate", "grupo": "Real estate", "empresa": "Tanami Properties", "canal": "tanamiproperties.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Broker con desarrolladores Emaar y Damac: alto volumen de leads entrantes", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 60, "prio": "P2", "score": 70, "pais": "Estados Unidos", "ciudad": "Fort Lauderdale (Lauderhill), FL", "rubro": "Med spa", "grupo": "Estética y dermatología", "empresa": "Strax Med Spa", "canal": "straxmedspa.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Med spa asociado a centro quirurgico, ticket alto", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 18, "prio": "P2", "score": 69, "pais": "Argentina", "ciudad": "CABA (Palermo)", "rubro": "Dermatologia estetica", "grupo": "Estética y dermatología", "empresa": "Casa Piel Dermatologia", "canal": "casapieldermatologia.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54117074-5612", "rating": "4.9", "resenas": "345", "reclamada": "si", "hook": "4.9 con 345 resenas pero solo 2 fotos en la ficha. Presencia desaprovechada", "grado": "A", "fuente": "Google Business Profile"}, {"id": 46, "prio": "P2", "score": 69, "pais": "Argentina", "ciudad": "CABA (Palermo)", "rubro": "Estudio contable", "grupo": "Estudio contable", "empresa": "Nicolas Garibotti - Estudio Contable", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Servicio profesional recurrente sin web", "grado": "B", "fuente": "BirdSift"}, {"id": 19, "prio": "P2", "score": 68, "pais": "Argentina", "ciudad": "CABA (Almagro)", "rubro": "Dermatologia estetica", "grupo": "Estética y dermatología", "empresa": "Due Derma", "canal": "duederma.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+54114822-6250", "rating": "4.9", "resenas": "331", "reclamada": "si", "hook": "331 resenas, sitio antiguo sin reserva online", "grado": "A", "fuente": "Google Business Profile"}, {"id": 43, "prio": "P2", "score": 68, "pais": "Argentina", "ciudad": "San Isidro", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "Beauty and Esthetics", "canal": "belleza-estetica.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sitio antiguo sin reserva online", "grado": "B", "fuente": "BirdSift"}, {"id": 47, "prio": "P2", "score": 68, "pais": "Argentina", "ciudad": "CABA (Palermo)", "rubro": "Estudio contable", "grupo": "Estudio contable", "empresa": "Estudio Contable - Tus Finanzas", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sin web", "grado": "B", "fuente": "BirdSift"}, {"id": 53, "prio": "P2", "score": 68, "pais": "Emiratos Arabes Unidos", "ciudad": "Dubai", "rubro": "Real estate", "grupo": "Real estate", "empresa": "Allegiance Real Estate", "canal": "aredxb.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Brokerage premium con cartera internacional", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 63, "prio": "P2", "score": 68, "pais": "Estados Unidos", "ciudad": "Miami Beach, FL", "rubro": "Real estate boutique", "grupo": "Real estate", "empresa": "COSMORE Real Estate Group", "canal": "cosmore.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Boutique multilingue orientada a comprador extranjero", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 71, "prio": "P2", "score": 68, "pais": "Brasil", "ciudad": "Balneario Camboriu, SC", "rubro": "Inmobiliaria boutique", "grupo": "Real estate", "empresa": "Salute Imoveis", "canal": "saluteimoveis.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Inmobiliaria en mercado de inversion vertical de alto ticket", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 20, "prio": "P2", "score": 67, "pais": "Argentina", "ciudad": "CABA (Palermo)", "rubro": "Wellness / dermatologia", "grupo": "Estética y dermatología", "empresa": "VITRU Dermatologia Estetica & Life Style", "canal": "vitru.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+54112407-9778", "rating": "5.0", "resenas": "145", "reclamada": "si", "hook": "Posicionamiento premium reciente, sin embudo digital", "grado": "A", "fuente": "Google Business Profile"}, {"id": 48, "prio": "P2", "score": 67, "pais": "Argentina", "ciudad": "CABA (Palermo Chico)", "rubro": "Estudio contable", "grupo": "Estudio contable", "empresa": "Estudio Contable G&G", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sin web", "grado": "B", "fuente": "BirdSift"}, {"id": 49, "prio": "P2", "score": 67, "pais": "Argentina", "ciudad": "CABA (Palermo)", "rubro": "Estudio contable", "grupo": "Estudio contable", "empresa": "Estudio Contable Julian Dominguez", "canal": "SIN SITIO WEB", "canalLabel": "Sin web", "sev": "hot", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Contador publico UBA sin sitio propio", "grado": "B", "fuente": "BirdSift"}, {"id": 54, "prio": "P2", "score": 67, "pais": "Emiratos Arabes Unidos", "ciudad": "Dubai", "rubro": "Real estate", "grupo": "Real estate", "empresa": "Azco Real Estate Brokers", "canal": "azcorealestate.ae", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Ventas, alquileres y off-plan: flujo constante de consultas por WhatsApp", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 21, "prio": "P2", "score": 66, "pais": "Argentina", "ciudad": "CABA (Belgrano)", "rubro": "Dermatologia", "grupo": "Estética y dermatología", "empresa": "Psoriahue (2 sedes)", "canal": "psoria-hue.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+5470781076", "rating": "4.7", "resenas": "237", "reclamada": "si", "hook": "Dos sedes, 25 anos de marca, sitio desactualizado", "grado": "A", "fuente": "Google Business Profile"}, {"id": 22, "prio": "P2", "score": 66, "pais": "Argentina", "ciudad": "CABA (Recoleta)", "rubro": "Dermatologia / cirugia", "grupo": "Estética y dermatología", "empresa": "Centro Zimman", "canal": "centrozimman.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "+54114141-3535", "rating": "4.9", "resenas": "227", "reclamada": "si", "hook": "Dermatologia quirurgica + cirugia plastica, ticket muy alto", "grado": "A", "fuente": "Google Business Profile"}, {"id": 44, "prio": "P2", "score": 66, "pais": "Argentina", "ciudad": "Villa Adelina", "rubro": "Consultorio medico", "grupo": "Estética y dermatología", "empresa": "Consultorio Dr. Alberto Perez Miranda", "canal": "perezmiranda.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Sitio desactualizado", "grado": "B", "fuente": "BirdSift"}, {"id": 55, "prio": "P2", "score": 66, "pais": "Emiratos Arabes Unidos", "ciudad": "Dubai", "rubro": "Desarrolladora", "grupo": "Real estate", "empresa": "BEYOND Developments", "canal": "beyonddevelopments.ae", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Desarrolladora con sitio casi sin contenido", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 61, "prio": "P2", "score": 66, "pais": "Estados Unidos", "ciudad": "Fort Lauderdale (Weston), FL", "rubro": "Spa / wellness", "grupo": "Estética y dermatología", "empresa": "Gaia Spa", "canal": "thegaiaspa.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Spa con sitio sin reserva online", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 64, "prio": "P2", "score": 66, "pais": "Estados Unidos", "ciudad": "Fort Lauderdale (Sunrise), FL", "rubro": "Real estate boutique", "grupo": "Real estate", "empresa": "Interbloom Real Estate & Investment", "canal": "interbloomgroup.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Boutique hispanohablante en Miami-Dade y Broward", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 68, "prio": "P2", "score": 66, "pais": "Espana", "ciudad": "Madrid", "rubro": "Inmobiliaria", "grupo": "Real estate", "empresa": "Grupo Inmobiliario Mejocasa", "canal": "mejocasa.es", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "29 anos y 4 oficinas en Madrid con metodo propio de venta", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 23, "prio": "P2", "score": 65, "pais": "Argentina", "ciudad": "CABA (Puerto Madero)", "rubro": "Clinica estetica laser", "grupo": "Estética y dermatología", "empresa": "Clinica LEMEL", "canal": "clinicalemel.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+5448077800", "rating": "4.3", "resenas": "207", "reclamada": "si", "hook": "30 anos, laser estetico, rating mejorable", "grado": "A", "fuente": "Google Business Profile"}, {"id": 24, "prio": "P2", "score": 64, "pais": "Argentina", "ciudad": "CABA (Caballito)", "rubro": "Medicina estetica", "grupo": "Estética y dermatología", "empresa": "Flebella Medicina Estetica", "canal": "flebella.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+549116865-3898", "rating": "4.6", "resenas": "139", "reclamada": "si", "hook": "Catalogo enorme de tratamientos sin estructura de conversion", "grado": "A", "fuente": "Google Business Profile"}, {"id": 69, "prio": "P2", "score": 64, "pais": "Espana", "ciudad": "Barcelona (Hospitalet)", "rubro": "Inmobiliaria boutique", "grupo": "Real estate", "empresa": "Hogarea by Keller Williams", "canal": "hogarea.house", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Marca joven con discurso de diferenciacion, sin embudo", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 25, "prio": "P2", "score": 63, "pais": "Argentina", "ciudad": "CABA (Caballito)", "rubro": "Spa medico / estetica", "grupo": "Estética y dermatología", "empresa": "LAB Estetica Profesional", "canal": "labestetica.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54117982-3333", "rating": "4.9", "resenas": "130", "reclamada": "si", "hook": "Toma turnos por WhatsApp de forma manual (declarado en la ficha)", "grado": "A", "fuente": "Google Business Profile"}, {"id": 26, "prio": "P2", "score": 62, "pais": "Argentina", "ciudad": "CABA (Nunez)", "rubro": "Medicina estetica", "grupo": "Estética y dermatología", "empresa": "FioDerm Estetica Medica", "canal": "fioderm.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54114417-1445", "rating": "4.8", "resenas": "119", "reclamada": "si", "hook": "Equipo multiprofesional, sitio basico", "grado": "A", "fuente": "Google Business Profile"}, {"id": 56, "prio": "P3", "score": 62, "pais": "Emiratos Arabes Unidos", "ciudad": "Dubai", "rubro": "Hospitalidad boutique", "grupo": "Hotelería boutique", "empresa": "Livbnb", "canal": "livbnb.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Gestion de propiedades con check-in y concierge: automatizable punta a punta", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 62, "prio": "P3", "score": 62, "pais": "Estados Unidos", "ciudad": "Palm Beach (Atlantis), FL", "rubro": "Estetica", "grupo": "Estética y dermatología", "empresa": "V Boutique Aesthetic", "canal": "vboutiqueflorida.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Boutique estetica con presencia digital minima", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 72, "prio": "P3", "score": 62, "pais": "Italia", "ciudad": "Milan", "rubro": "Hospitalidad / rentas", "grupo": "Hotelería boutique", "empresa": "The Best Rent", "canal": "thebestrent.it", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Operador de estancias cortas y medias en Milan y Roma", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 27, "prio": "P3", "score": 60, "pais": "Argentina", "ciudad": "CABA (Tribunales)", "rubro": "Depilacion laser premium", "grupo": "Estética y dermatología", "empresa": "Depilacion para Hombres - GONZALO", "canal": "depilacionparahombres.com", "canalLabel": "Web propia", "sev": "cool", "tel": "+54113251-9008", "rating": "4.9", "resenas": "438", "reclamada": "si", "hook": "Nicho masculino, reservas 100% por WhatsApp manual", "grado": "A", "fuente": "Google Business Profile"}, {"id": 50, "prio": "P3", "score": 60, "pais": "Argentina", "ciudad": "CABA", "rubro": "Inmobiliaria", "grupo": "Real estate", "empresa": "Salem Propiedades", "canal": "salempropiedades.com.ar", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Inmobiliaria de CABA con sitio basico", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 57, "prio": "P3", "score": 60, "pais": "Emiratos Arabes Unidos", "ciudad": "Abu Dhabi", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "Oaiss Braces Center", "canal": "oaissbracescenter.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Ortodoncia con sitio minimo", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 65, "prio": "P3", "score": 60, "pais": "Estados Unidos", "ciudad": "Miami, FL", "rubro": "Real estate comercial", "grupo": "Real estate", "empresa": "Yale Realty & Capital Advisors", "canal": "yaleadvisors.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Nicho de mobile home communities, ticket muy alto", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 70, "prio": "P3", "score": 60, "pais": "Espana", "ciudad": "Barcelona (Cornella)", "rubro": "Inmobiliaria boutique", "grupo": "Real estate", "empresa": "ECI Ebusa Consultora Inmobiliaria", "canal": "ebusa.es", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Consultora inmobiliaria con una decada de trayectoria", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 73, "prio": "P3", "score": 60, "pais": "Colombia", "ciudad": "Colombia (turismo dental)", "rubro": "Odontologia premium", "grupo": "Odontología", "empresa": "Dra. Johanna Calderon - Dental Tourism Colombia", "canal": "periodoncistajohannacalderon.com", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Turismo dental con paciente internacional: embudo y seguimiento por WhatsApp", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 58, "prio": "P3", "score": 59, "pais": "Emiratos Arabes Unidos", "ciudad": "Dubai", "rubro": "Odontologia", "grupo": "Odontología", "empresa": "Best Dental Clinic Al Rigga", "canal": "bestdentalclinic.ae", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Clinica dental con sitio basico", "grado": "C", "fuente": "Vibe Prospecting"}, {"id": 28, "prio": "P3", "score": 58, "pais": "Argentina", "ciudad": "CABA (Villa Crespo)", "rubro": "Cosmetologia", "grupo": "Estética y dermatología", "empresa": "Camila Taborda Cosmetologia", "canal": "Solo AgendaPro (sin dominio propio)", "canalLabel": "Booking de terceros", "sev": "warm", "tel": "+54117059-0119", "rating": "5.0", "resenas": "254", "reclamada": "si", "hook": "5.0 con 254 resenas y sin dominio propio: depende de un booking de terceros", "grado": "A", "fuente": "Google Business Profile"}, {"id": 59, "prio": "P3", "score": 58, "pais": "Emiratos Arabes Unidos", "ciudad": "Abu Dhabi", "rubro": "Centro medico", "grupo": "Estética y dermatología", "empresa": "Shield Medical Center", "canal": "shieldmedicalcenter.ae", "canalLabel": "Web propia", "sev": "cool", "tel": "", "rating": "", "resenas": "", "reclamada": "", "hook": "Centro medico con odontologia", "grado": "C", "fuente": "Vibe Prospecting"}];
+
+const state = {q:"", pais:"", grupo:"", prio:new Set(), grado:new Set(), sinWeb:false};
+
+const el = id => document.getElementById(id);
+const uniq = k => [...new Set(LEADS.map(l => l[k]))].sort((a,b)=>a.localeCompare(b,"es"));
+
+function fillSelect(node, label, values){
+  node.innerHTML = "";
+  const all = document.createElement("option");
+  all.value = ""; all.textContent = label;
+  node.append(all);
+  values.forEach(v => {
+    const o = document.createElement("option");
+    o.value = v; o.textContent = v;
+    node.append(o);
+  });
+}
+
+function buildChips(node, values, key){
+  values.forEach(v => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = v;
+    b.setAttribute("aria-pressed","false");
+    b.addEventListener("click", () => {
+      const on = b.getAttribute("aria-pressed") === "true";
+      b.setAttribute("aria-pressed", String(!on));
+      on ? state[key].delete(v) : state[key].add(v);
+      render();
+    });
+    node.append(b);
+  });
+}
+
+function matches(l){
+  if(state.pais && l.pais !== state.pais) return false;
+  if(state.grupo && l.grupo !== state.grupo) return false;
+  if(state.prio.size && !state.prio.has(l.prio)) return false;
+  if(state.grado.size && !state.grado.has(l.grado)) return false;
+  if(state.sinWeb && l.sev === "cool") return false;
+  if(state.q){
+    const hay = (l.empresa+" "+l.ciudad+" "+l.rubro+" "+l.pais+" "+l.hook).toLowerCase();
+    if(!hay.includes(state.q)) return false;
+  }
+  return true;
+}
+
+function summary(){
+  const sinWeb = LEADS.filter(l => l.sev !== "cool").length;
+  const listos = LEADS.filter(l => l.grado === "A").length;
+  const p1 = LEADS.filter(l => l.prio === "P1").length;
+  const stats = [
+    [LEADS.length, "leads calificados"],
+    [listos, "con teléfono verificado"],
+    [sinWeb, "sin sitio propio"],
+    [p1, "prioridad uno"],
+    [new Set(LEADS.map(l=>l.pais)).size, "países"],
+  ];
+  el("summary").innerHTML = stats.map(([n,k]) =>
+    `<div class="stat"><span class="n">${n}</span><span class="k">${k}</span></div>`).join("");
+}
+
+function row(l){
+  const tags = [`<span class="tag ${l.sev}">${l.canalLabel}</span>`,
+                `<span class="tag ghost">${l.grupo}</span>`];
+  if(l.reclamada === "no") tags.push(`<span class="tag unclaimed">Ficha sin reclamar</span>`);
+  tags.push(`<span class="tag ghost">Dato ${l.grado}</span>`);
+
+  const site = /\./.test(l.canal) && !/^Solo|^SIN/.test(l.canal)
+    ? `<a class="site" href="https://${l.canal.replace(/^https?:\/\//,"")}" target="_blank" rel="noopener">${l.canal}</a>` : "";
+
+  const metric = l.resenas
+    ? `<span class="metric"><b>${l.rating}</b> · ${l.resenas} reseñas</span>` : "";
+
+  const call = l.tel
+    ? `<a class="call" href="tel:${l.tel.replace(/[^+\d]/g,"")}">${l.tel}</a>`
+    : `<span class="pending">Falta teléfono</span>`;
+
+  return `<article class="lead sev-${l.sev}">
+    <div class="score"><b>${l.score}</b><span>${l.prio}</span></div>
+    <div class="who">
+      <h3>${l.empresa}</h3>
+      <div class="where">${l.ciudad} <em>·</em> ${l.pais}</div>
+      <div class="tags">${tags.join("")}</div>
+    </div>
+    <p class="hook">${l.hook}</p>
+    <div class="reach">${metric}${call}${site}</div>
+  </article>`;
+}
+
+function render(){
+  const out = LEADS.filter(matches);
+  el("list").innerHTML = out.length
+    ? out.map(row).join("")
+    : `<p class="empty">Ningún lead cumple esos filtros. Probá aflojando prioridad o rubro.</p>`;
+  el("count").textContent = out.length === LEADS.length
+    ? `Mostrando los ${LEADS.length} leads, de mayor a menor brecha.`
+    : `${out.length} de ${LEADS.length} leads.`;
+}
+
+fillSelect(el("pais"), "Todos los países", uniq("pais"));
+fillSelect(el("grupo"), "Todos los rubros", uniq("grupo"));
+buildChips(el("prio"), ["P1","P2","P3"], "prio");
+buildChips(el("grado"), ["A","B","C"], "grado");
+
+el("pais").addEventListener("change", e => { state.pais = e.target.value; render(); });
+el("grupo").addEventListener("change", e => { state.grupo = e.target.value; render(); });
+el("q").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+el("soloSinWeb").addEventListener("click", e => {
+  state.sinWeb = !state.sinWeb;
+  e.currentTarget.setAttribute("aria-pressed", String(state.sinWeb));
+  render();
+});
+
+summary();
+render();
+</script>
