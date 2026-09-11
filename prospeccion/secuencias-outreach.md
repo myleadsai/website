@@ -74,7 +74,7 @@ motivo no es la atención, no uses este ángulo.
 
 ## Track B · Email a decisores internacionales
 
-Remitente sugerido: la casilla comercial propia con dominio verificado. Todos llevan firma con
+Remitente: la casilla de Gmail de la agencia (myleads.ia@gmail.com), no la de Inkbox. Todos llevan firma con
 nombre real, empresa, web y una línea de baja. Sin esa línea no se manda nada a España ni a la UE.
 
 Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que huela a masivo.
@@ -95,7 +95,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Le interesa ver una demo de quince minutos con el flujo de su propia web?
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### B2 · Amr Aboushaban — CEO, Allegiance Real Estate (Dubái)
 **Para:** amr@allegiance.ae
@@ -112,7 +114,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Le sirve una llamada corta esta semana? Si prefiere, lo hablo directamente con Muhammad Asim.
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### B3 · Muhammad Asim — Senior Director CRM, Leads & Listings, Allegiance (Dubái)
 **Para:** muhammad.asim@allegiance.ae
@@ -128,7 +132,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Quince minutos para que le muestre el flujo?
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### B4 · Kevin Wendle — Owner & CEO, Hotel Esencia (Riviera Maya)
 **Para:** kevin@hotelesencia.com
@@ -146,7 +152,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Le interesa ver el flujo aplicado a Esencia?
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### B5 · Lea Gibert — Director of Sales & Operations, Hotel Esencia
 **Para:** lea@hotelesencia.com
@@ -162,7 +170,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Le sirve una demo corta con el caso de Esencia?
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### B6 · Ozkar Gutiérrez — Director de ventas, Casa Malca (Tulum)
 **Para:** ozkar@casamalca.com
@@ -179,7 +189,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Te muestro cómo queda con el perfil de ustedes? Son quince minutos.
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### B7 · Piero Ruggeri — CEO, COSMORE Real Estate Group (Miami Beach)
 **Para:** pruggeri@cosmore.com
@@ -196,7 +208,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Le interesa verlo aplicado al sitio de COSMORE?
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### B8 · Ana Serrat — Owner y CEO, Interbloom Real Estate (Fort Lauderdale)
 **Para:** anaserrat@interbloomgroup.com
@@ -213,7 +227,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Le sirve una demo de quince minutos?
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### B9 · Carlos Martínez — Fundador, MEJOCASA (Madrid)
 **Para:** carlosmartinez@mejocasa.es
@@ -230,7 +246,9 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 >
 > ¿Le interesa verlo con los datos de MEJOCASA?
 >
-> Franco
+> Franco Scaglione
+> MyLeads · myleads.ai
+> Si prefiere no recibir más correos míos, respóndame "baja" y no vuelvo a escribirle.
 
 ### Seguimiento del Track B
 
@@ -245,12 +263,12 @@ Asuntos cortos, en minúscula, sin signos de exclamación ni corchetes. Nada que
 | Herramienta | Resultado |
 |---|---|
 | **Clay** | Funciona. Encontró decisores con cargo y resolvió 9 emails de trabajo verificados. Es la pieza central para completar los leads de grado C. |
-| **Inkbox** | Funciona para email. Casilla activa `myleadscomercial@inkboxmail.com` con dominio verificado. Sin teléfono ni SMS asignado. |
+| **Inkbox** | Funciona para email desde `myleadscomercial@inkboxmail.com`, pero se descartó: el envío va por Gmail. Sin teléfono ni SMS asignado. |
 | **Make** | Cuenta conectada. Sirve para armar el seguimiento automático, no para prospectar. |
 | **OpenSEO** | Dio los 35 leads con teléfono y rating. Sin crédito. |
 | **BirdSift** | Redactor de emails sin crédito suficiente, y solo escribe en inglés y francés. No sirve para este mercado. |
 | **Ahrefs** | El plan de la cuenta no habilita la API. Descartado para auditar sitios de prospectos. |
-| **Zapier** | Sin cuentas conectadas, ni Gmail ni otras. Habría que conectar una antes de poder usarlo. |
+| **Zapier** | Es el camino para enviar desde Gmail, pero no hay ninguna cuenta de Google vinculada todavía. Hay que autorizarla una vez. |
 
 ## Antes de enviar
 
@@ -259,5 +277,6 @@ remitente identificado con empresa real, motivo por el que se contacta a esa per
 profesional, y una línea de baja que funcione. Es lo que separa un correo B2B legítimo de spam,
 y en España es además lo que exige el marco de datos.
 
-La casilla de Inkbox es un subdominio de plataforma. Para volumen conviene un dominio propio
-calentado, si no el primer envío grande termina en spam y se quema la lista.
+Enviando desde Gmail el volumen diario tiene techo: nueve correos nominales y espaciados no
+mueven la aguja, pero una tanda grande desde una cuenta gratuita sí cae en spam. Para escalar
+hace falta un dominio propio con SPF, DKIM y DMARC.
