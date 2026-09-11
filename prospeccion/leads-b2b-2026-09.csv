@@ -1,0 +1,74 @@
+id,prioridad,score,pais,ciudad_zona,rubro,empresa,canal_web,telefono,rating,resenas,ficha_reclamada,hook_comercial,grado_dato,fuente
+1,P1,92,Argentina,"Vicente Lopez (Florida)","Odontologia",Odonto Maipu,"SIN SITIO WEB",+549113043-8415,3.7,413,si,"413 resenas y cero sitio web; rating bajo por atencion. Caso ideal de web + bot de turnos por WhatsApp",A,"Google Business Profile"
+2,P1,91,Argentina,"Olivos","Odontologia",Ayres Dental,"Solo Instagram",+54112400-1485,5.0,305,si,"5.0 con 305 resenas y sin sitio propio. Toda la conversion depende del DM de Instagram",A,"Google Business Profile"
+3,P1,90,Argentina,"CABA (Colegiales)","Clinica estetica / dermatologia",Tosiponti Skin Longevity,"Solo Instagram",+54114740-0102,4.9,884,si,"884 resenas, dermatologia de precision, ticket alto y sin web propia",A,"Google Business Profile"
+4,P1,88,Argentina,"Olivos","Odontologia",Coin,"SIN SITIO WEB",+54114799-3215,2.3,347,no,"Ficha sin reclamar y rating 2.3 con 347 resenas. Urgencia reputacional + captacion",A,"Google Business Profile"
+5,P1,86,Argentina,"San Isidro","Odontologia",San Isidro Labrador Dental Center,"Solo Facebook",+54112467-2026,2.7,247,no,"Ficha sin reclamar, solo pagina de Facebook, rating 2.7. Rehacer presencia completa",A,"Google Business Profile"
+6,P1,85,Argentina,"Martinez","Odontologia premium",Esthetic Dentistry Dental Juri,esteticajuri.com.ar,+549112594-5555,4.8,1836,si,"1836 resenas, implantologia + estetica medica. Volumen de consultas que justifica automatizacion",A,"Google Business Profile"
+7,P1,82,Argentina,"CABA (Belgrano)","Medicina estetica",Silvana Dato - Centro Medico,silvanadato.com,+54114774-7279,4.9,1088,si,"1088 resenas, ticket alto, sitio con poca profundidad comercial",A,"Google Business Profile"
+8,P1,80,Argentina,"CABA (Caballito)","Cirugia plastica / estetica",Hoogstra Centros Medicos,doctorhoogstra.com,+54114901-6690,4.6,719,si,"Cirugia plastica y laser, ticket muy alto, multiples sedes",A,"Google Business Profile"
+9,P1,80,Argentina,"CABA (Recoleta)","Clinica estetica",Centro Chouela,chouela.com,+54112256-6757,2.9,234,si,"Rating 2.9 con 234 resenas: falla de atencion y seguimiento. Angulo directo para bot + CRM",A,"Google Business Profile"
+10,P1,78,Argentina,"San Isidro / Virreyes","Odontologia",Dental Total (red),dentaltotal.com.ar,+54800-777-1919,4.9,520,si,"Red con multiples sedes y linea 0800. Alto volumen de turnos para automatizar",A,"Google Business Profile"
+11,P2,76,Argentina,"San Fernando (Victoria)","Odontologia",Odontologia Northdent,odontologianorthdent.com,+54116362-7695,4.9,428,si,"4.9 con 428 resenas en Zona Norte. Sitio basico sin captacion",A,"Google Business Profile"
+12,P2,75,Argentina,"CABA (Nunez)","Odontologia",Agustina Losardo Odontologia,agustinalosardoodontologia.com,+54114198-3388,5.0,414,si,"5.0 con 414 resenas. Marca personal fuerte, sitio sin embudo",A,"Google Business Profile"
+13,P2,74,Argentina,"CABA (Caballito)","Medicina estetica",Beautyderm - Medical Aesthetic Center,beautyderm.com.ar,+5448527878,4.8,506,si,"506 resenas y 391 fotos: mucha demanda, sin sistema de captacion",A,"Google Business Profile"
+14,P2,72,Argentina,"Vicente Lopez","Odontologia",City Dent,citydent.ar,+54112669-6317,4.6,254,si,"Todas las especialidades incluidas implantes. Sitio minimo",A,"Google Business Profile"
+15,P2,72,Argentina,"CABA (Palermo)","Clinica capilar / tricologia",Dr. Miguel Marti - Dermatologo,drmiguelmarti.com,+549116619-7156,4.6,162,si,"Tricologia y recuperacion capilar: rubro pedido, ticket alto, lider de opinion regional",A,"Google Business Profile"
+16,P2,70,Argentina,"CABA (Recoleta)","Dermatologia estetica",Dra. Paniego Dermatologia,draflorenciapaniego.com,+54113157-4922,4.5,373,si,"373 resenas en Recoleta. Sitio de una pagina",A,"Google Business Profile"
+17,P2,70,Argentina,"CABA (Palermo)","Medicina estetica",List Medical Center,centromedicolist.ar,+54114829-0243,4.8,328,si,"Medicina estetica + nutricion clinica, ticket alto",A,"Google Business Profile"
+18,P2,69,Argentina,"CABA (Palermo)","Dermatologia estetica",Casa Piel Dermatologia,casapieldermatologia.com,+54117074-5612,4.9,345,si,"4.9 con 345 resenas pero solo 2 fotos en la ficha. Presencia desaprovechada",A,"Google Business Profile"
+19,P2,68,Argentina,"CABA (Almagro)","Dermatologia estetica",Due Derma,duederma.com.ar,+54114822-6250,4.9,331,si,"331 resenas, sitio antiguo sin reserva online",A,"Google Business Profile"
+20,P2,67,Argentina,"CABA (Palermo)","Wellness / dermatologia",VITRU Dermatologia Estetica & Life Style,vitru.com.ar,+54112407-9778,5.0,145,si,"Posicionamiento premium reciente, sin embudo digital",A,"Google Business Profile"
+21,P2,66,Argentina,"CABA (Belgrano)","Dermatologia",Psoriahue (2 sedes),psoria-hue.com.ar,+5470781076,4.7,237,si,"Dos sedes, 25 anos de marca, sitio desactualizado",A,"Google Business Profile"
+22,P2,66,Argentina,"CABA (Recoleta)","Dermatologia / cirugia",Centro Zimman,centrozimman.com.ar,+54114141-3535,4.9,227,si,"Dermatologia quirurgica + cirugia plastica, ticket muy alto",A,"Google Business Profile"
+23,P2,65,Argentina,"CABA (Puerto Madero)","Clinica estetica laser",Clinica LEMEL,clinicalemel.com,+5448077800,4.3,207,si,"30 anos, laser estetico, rating mejorable",A,"Google Business Profile"
+24,P2,64,Argentina,"CABA (Caballito)","Medicina estetica",Flebella Medicina Estetica,flebella.com,+549116865-3898,4.6,139,si,"Catalogo enorme de tratamientos sin estructura de conversion",A,"Google Business Profile"
+25,P2,63,Argentina,"CABA (Caballito)","Spa medico / estetica",LAB Estetica Profesional,labestetica.com,+54117982-3333,4.9,130,si,"Toma turnos por WhatsApp de forma manual (declarado en la ficha)",A,"Google Business Profile"
+26,P2,62,Argentina,"CABA (Nunez)","Medicina estetica",FioDerm Estetica Medica,fioderm.com,+54114417-1445,4.8,119,si,"Equipo multiprofesional, sitio basico",A,"Google Business Profile"
+27,P3,60,Argentina,"CABA (Tribunales)","Depilacion laser premium",Depilacion para Hombres - GONZALO,depilacionparahombres.com,+54113251-9008,4.9,438,si,"Nicho masculino, reservas 100% por WhatsApp manual",A,"Google Business Profile"
+28,P3,58,Argentina,"CABA (Villa Crespo)","Cosmetologia",Camila Taborda Cosmetologia,"Solo AgendaPro (sin dominio propio)",+54117059-0119,5.0,254,si,"5.0 con 254 resenas y sin dominio propio: depende de un booking de terceros",A,"Google Business Profile"
+29,P1,84,Argentina,"San Isidro","Medicina estetica",Mingoni Centro de Medicina Estetica,"Solo Instagram",,,,,"Medicina estetica en San Isidro sin sitio web. Conversion 100% por DM",B,BirdSift
+30,P1,83,Argentina,"San Isidro","Medicina estetica",LAE Medicina Estetica,"Solo Instagram",,,,,"Sobre Av. del Libertador, sin sitio propio",B,BirdSift
+31,P1,82,Argentina,"Vicente Lopez","Dermatologia estetica",Dr. Alejandro Leone - Dermatologia Quirurgica & Laser,"Solo Instagram",,,,,"Dermatologia quirurgica y laser sin web. Ticket alto",B,BirdSift
+32,P1,80,Argentina,"Martinez","Estetica",EM PIEL ESTUDIO,"Solo Instagram",,,,,"Estudio de piel sin sitio web",B,BirdSift
+33,P1,79,Argentina,"San Isidro","Estetica",Dr Beauty San Isidro,"SIN SITIO WEB",,,,,"Sin web ni Instagram enlazado en la ficha",B,BirdSift
+34,P1,78,Argentina,"Martinez","Estetica",Estetica Martinez,"SIN SITIO WEB",,,,,"Sin presencia digital propia en zona de alto poder adquisitivo",B,BirdSift
+35,P1,78,Argentina,"Olivos","Estetica",Estetica Martinez (Olivos),"SIN SITIO WEB",,,,,"Segunda sede sin web",B,BirdSift
+36,P1,77,Argentina,"Vicente Lopez","Estetica",ESTILO UP Vicente Lopez,"SIN SITIO WEB",,,,,"Centro estetico sin web",B,BirdSift
+37,P1,77,Argentina,"Olivos","Estetica",Dr Beauty Vicente Lopez,"SIN SITIO WEB",,,,,"Sobre Av. del Libertador, sin web",B,BirdSift
+38,P2,74,Argentina,"Vicente Lopez","Estetica",Estetica Von,"Solo Instagram",,,,,"Sin sitio web",B,BirdSift
+39,P2,74,Argentina,"Vicente Lopez","Estetica",Lestetica,"Solo Instagram",,,,,"Sin sitio web",B,BirdSift
+40,P2,73,Argentina,"Florida (Vicente Lopez)","Estetica",Coty Estetica,"Solo Instagram",,,,,"Sin sitio web",B,BirdSift
+41,P2,72,Argentina,"Martinez","Cirugia estetica / dermatologia",Clinica Ferreira,clinicaferreira.com,,,,,"Cirugia estetica en Martinez, sitio desactualizado",B,BirdSift
+42,P2,71,Argentina,"Martinez","Medicina estetica",FDN Medicina Estetica (Dra. Flor Di Napoli),draflordinapoli.com,,,,,"Marca personal medica, sitio sin captacion",B,BirdSift
+43,P2,68,Argentina,"San Isidro","Estetica",Beauty and Esthetics,belleza-estetica.com.ar,,,,,"Sitio antiguo sin reserva online",B,BirdSift
+44,P2,66,Argentina,"Villa Adelina","Consultorio medico",Consultorio Dr. Alberto Perez Miranda,perezmiranda.com.ar,,,,,"Sitio desactualizado",B,BirdSift
+45,P2,70,Argentina,"CABA (Palermo)","Estudio contable",Contador 360,"Solo Instagram",,,,,"Estudio contable que capta por Instagram sin sitio ni embudo",B,BirdSift
+46,P2,69,Argentina,"CABA (Palermo)","Estudio contable",Nicolas Garibotti - Estudio Contable,"SIN SITIO WEB",,,,,"Servicio profesional recurrente sin web",B,BirdSift
+47,P2,68,Argentina,"CABA (Palermo)","Estudio contable",Estudio Contable - Tus Finanzas,"SIN SITIO WEB",,,,,"Sin web",B,BirdSift
+48,P2,67,Argentina,"CABA (Palermo Chico)","Estudio contable",Estudio Contable G&G,"SIN SITIO WEB",,,,,"Sin web",B,BirdSift
+49,P2,67,Argentina,"CABA (Palermo)","Estudio contable",Estudio Contable Julian Dominguez,"SIN SITIO WEB",,,,,"Contador publico UBA sin sitio propio",B,BirdSift
+50,P3,60,Argentina,"CABA","Inmobiliaria",Salem Propiedades,salempropiedades.com.ar,,,,,"Inmobiliaria de CABA con sitio basico",C,"Vibe Prospecting"
+51,P2,72,Emiratos Arabes Unidos,"Dubai","Real estate de lujo",KAYE & CO.,kayeandco.ae,,,,,"Boutique de lujo con 15 anos, foco en compradores internacionales",C,"Vibe Prospecting"
+52,P2,70,Emiratos Arabes Unidos,"Dubai","Real estate",Tanami Properties,tanamiproperties.com,,,,,"Broker con desarrolladores Emaar y Damac: alto volumen de leads entrantes",C,"Vibe Prospecting"
+53,P2,68,Emiratos Arabes Unidos,"Dubai","Real estate",Allegiance Real Estate,aredxb.com,,,,,"Brokerage premium con cartera internacional",C,"Vibe Prospecting"
+54,P2,67,Emiratos Arabes Unidos,"Dubai","Real estate",Azco Real Estate Brokers,azcorealestate.ae,,,,,"Ventas, alquileres y off-plan: flujo constante de consultas por WhatsApp",C,"Vibe Prospecting"
+55,P2,66,Emiratos Arabes Unidos,"Dubai","Desarrolladora",BEYOND Developments,beyonddevelopments.ae,,,,,"Desarrolladora con sitio casi sin contenido",C,"Vibe Prospecting"
+56,P3,62,Emiratos Arabes Unidos,"Dubai","Hospitalidad boutique",Livbnb,livbnb.com,,,,,"Gestion de propiedades con check-in y concierge: automatizable punta a punta",C,"Vibe Prospecting"
+57,P3,60,Emiratos Arabes Unidos,"Abu Dhabi","Odontologia",Oaiss Braces Center,oaissbracescenter.com,,,,,"Ortodoncia con sitio minimo",C,"Vibe Prospecting"
+58,P3,59,Emiratos Arabes Unidos,"Dubai","Odontologia",Best Dental Clinic Al Rigga,bestdentalclinic.ae,,,,,"Clinica dental con sitio basico",C,"Vibe Prospecting"
+59,P3,58,Emiratos Arabes Unidos,"Abu Dhabi","Centro medico",Shield Medical Center,shieldmedicalcenter.ae,,,,,"Centro medico con odontologia",C,"Vibe Prospecting"
+60,P2,70,Estados Unidos,"Fort Lauderdale (Lauderhill), FL","Med spa",Strax Med Spa,straxmedspa.com,,,,,"Med spa asociado a centro quirurgico, ticket alto",C,"Vibe Prospecting"
+61,P2,66,Estados Unidos,"Fort Lauderdale (Weston), FL","Spa / wellness",Gaia Spa,thegaiaspa.com,,,,,"Spa con sitio sin reserva online",C,"Vibe Prospecting"
+62,P3,62,Estados Unidos,"Palm Beach (Atlantis), FL","Estetica",V Boutique Aesthetic,vboutiqueflorida.com,,,,,"Boutique estetica con presencia digital minima",C,"Vibe Prospecting"
+63,P2,68,Estados Unidos,"Miami Beach, FL","Real estate boutique",COSMORE Real Estate Group,cosmore.com,,,,,"Boutique multilingue orientada a comprador extranjero",C,"Vibe Prospecting"
+64,P2,66,Estados Unidos,"Fort Lauderdale (Sunrise), FL","Real estate boutique",Interbloom Real Estate & Investment,interbloomgroup.com,,,,,"Boutique hispanohablante en Miami-Dade y Broward",C,"Vibe Prospecting"
+65,P3,60,Estados Unidos,"Miami, FL","Real estate comercial",Yale Realty & Capital Advisors,yaleadvisors.com,,,,,"Nicho de mobile home communities, ticket muy alto",C,"Vibe Prospecting"
+66,P1,78,Mexico,"Riviera Maya (Xpu-Ha), Q. Roo","Hotel boutique",Hotel Esencia,hotelesencia.com,,,,,"Hotel boutique de lujo: reservas directas y concierge por WhatsApp",C,"Vibe Prospecting"
+67,P1,76,Mexico,"Tulum, Q. Roo","Hotel boutique",Casa Malca,casamalca.com,,,,,"Hotel boutique de arte contemporaneo, ticket muy alto",C,"Vibe Prospecting"
+68,P2,66,Espana,"Madrid","Inmobiliaria",Grupo Inmobiliario Mejocasa,mejocasa.es,,,,,"29 anos y 4 oficinas en Madrid con metodo propio de venta",C,"Vibe Prospecting"
+69,P2,64,Espana,"Barcelona (Hospitalet)","Inmobiliaria boutique",Hogarea by Keller Williams,hogarea.house,,,,,"Marca joven con discurso de diferenciacion, sin embudo",C,"Vibe Prospecting"
+70,P3,60,Espana,"Barcelona (Cornella)","Inmobiliaria boutique",ECI Ebusa Consultora Inmobiliaria,ebusa.es,,,,,"Consultora inmobiliaria con una decada de trayectoria",C,"Vibe Prospecting"
+71,P2,68,Brasil,"Balneario Camboriu, SC","Inmobiliaria boutique",Salute Imoveis,saluteimoveis.com,,,,,"Inmobiliaria en mercado de inversion vertical de alto ticket",C,"Vibe Prospecting"
+72,P3,62,Italia,"Milan","Hospitalidad / rentas",The Best Rent,thebestrent.it,,,,,"Operador de estancias cortas y medias en Milan y Roma",C,"Vibe Prospecting"
+73,P3,60,Colombia,"Colombia (turismo dental)","Odontologia premium",Dra. Johanna Calderon - Dental Tourism Colombia,periodoncistajohannacalderon.com,,,,,"Turismo dental con paciente internacional: embudo y seguimiento por WhatsApp",C,"Vibe Prospecting"
