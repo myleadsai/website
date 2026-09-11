@@ -1,117 +1,133 @@
-# Cierre de hoy — estado y guiones
+# Cierre de hoy — estado de envíos
 
-## Emails enviados desde myleads.ia@gmail.com
+Todo sale de **myleads.ia@gmail.com**, firmado por Franco.
 
-| Empresa | Dirección | Estado |
+## Tanda 2 — voz de Franco, entregados
+
+Mensajes de cinco líneas, en primera persona, cada uno en el idioma del destinatario y con
+una observación propia de ese negocio. Cierran preguntando si quieren ver una muestra de
+cómo podría quedar su página.
+
+| Empresa | Dirección | Idioma | Mercado |
+|---|---|---|---|
+| Cenegenics México | hola@cenegenicswellness.mx | español | CDMX |
+| GP Desarrollos | contacto@gpdesarrollos.com.mx | español | Monterrey |
+| DIZA Consultores | dizaconsultores@dizaconsultores.com | español | Madrid |
+| BUCKINGHAM Property Advisors | info@bpaspain.com | español | Barcelona |
+| Dolori Clinic | contato@doloriclinic.com.br | portugués | São Paulo |
+| dr LASER | info@drlaserla.com | inglés | Los Ángeles |
+| Perfect Doctors Clinic | concierge@perfectdrs.com | inglés | Dubái |
+| Maris Clinic | hello@marisclinic.com | inglés | Jumeirah, Dubái |
+| Conrad Properties | info@conradproperties.asia | inglés | Koh Samui |
+
+Todas las direcciones se leyeron del sitio del prospecto antes de enviar. Cero rebotes.
+
+## Bloqueo activo
+
+La cuenta de Zapier agotó las tareas de su plan. El envío a **Indevia Accounting** falló por
+eso, no por la dirección. Hasta que se reponga el cupo no salen más correos por Gmail.
+
+## Listos para enviar apenas haya cupo
+
+Direcciones ya verificadas, solo falta el envío.
+
+| Empresa | Dirección | Idioma | Mercado |
+|---|---|---|---|
+| Indevia Accounting | info@indevia.com | inglés | San Diego |
+| Azura Resort & Residence | hello@azura-thailand.com | inglés | Koh Phangan |
+| Abadía Retuerta | thecraft@abadia-retuerta.es | español | Valladolid |
+
+## Tanda 1 — tono anterior, ya entregados
+
+Salieron antes del cambio de estilo. No reenviar: ya recibieron un mensaje hoy.
+
+Besten Mercedes Benz, Toyota Viola, Grupo Portland, Magna Hoteles, SMS Buenos Aires y
+Sileo Hotel.
+
+## Sin correo publicado: van por otro canal
+
+| Empresa | Canal | Dato |
 |---|---|---|
-| Besten Mercedes Benz | info@besten.com.ar | entregado |
-| Toyota Viola | info@toyotaviola.com.ar | entregado |
-| Grupo Portland | info@grupoportland.com | entregado |
-| Magna Hoteles | info@magnahoteles.com | entregado |
-| SMS Buenos Aires | info@sms.com.ar | entregado |
-| Sileo Hotel | reservas@sileohotel.com | entregado (dirección verificada en el sitio) |
-| Sileo Hotel | info@sileohotel.com | rebotó 550 |
-| Auta | info@auta.com.ar | rebotó 550 |
-| Fertilis | info@fertilis.com.ar | rebotó 550 |
+| Sileo Hotel | WhatsApp | +54 9 11 3448-2192 |
+| Besten San Fernando | WhatsApp ventas | 11 3328-5335 |
+| Fertilis | teléfono | +54 11 4735-2587 |
+| Fertivitro | WhatsApp | +55 11 99546-6272 |
+| Dolori Clinic | WhatsApp | +55 11 91738-8256 |
+| Conrad Properties | WhatsApp | +66 92 959-1299 |
+| Azura Resort | WhatsApp | +66 63 212-2443 |
+| Auta | Instagram o formulario | no publica correo ni teléfono |
+| Puerto & Cía | Instagram | @puertoycia |
+| Morelia Caballito | Instagram | @morelia_restaurant |
+| La Playita Bacalar | formulario | solo publica vacantes@, que es de empleo |
 
-Los tres rebotes salieron de direcciones que armé con el patrón `info@` en vez de leer la
-publicada en cada sitio. Sileo ya está corregido. Auta y Fertilis no publican ninguna
-dirección de correo: van por WhatsApp.
+Sitios que no dejaron leer sus datos: MBRAS, Bizrahmed, Groupe Philippe Etchebest y
+Toyota Viola devuelven 403 o cargan por JavaScript.
 
-## Teléfonos verificados en los sitios
+## Molde del mensaje
 
-| Empresa | Número | Fuente |
-|---|---|---|
-| Sileo Hotel | +54 9 11 3448-2192 (WhatsApp) · +54 11 4809-0001 | sileohotel.com |
-| Besten Mercedes Benz San Fernando | 11 3328-5335 (ventas, WhatsApp) | besten.com.ar/contacto |
-| Fertilis | +54 11 4735-2587 | fertilis.com.ar |
+1. Hola, un gusto. Mi nombre es Franco.
+2. Me dedico a hacer automatizaciones para empresas y sitios web que ayudan a la conversión
+   orgánica.
+3. Una observación concreta de ese negocio. Corta.
+4. ¿Les interesaría ver una muestra de cómo podría quedar su página?
+5. Franco
 
-Auta no publica teléfono ni correo: su canal es el formulario del sitio y su Instagram.
+Sin precio, sin links, sin estadísticas. Una sola pregunta.
 
 ## Guiones de WhatsApp
-
-Cortos a propósito. El primer mensaje sólo tiene que conseguir respuesta, no vender.
-
-### Besten Mercedes Benz — ventas San Fernando
-
-> Hola, ¿con quién puedo hablar del área comercial de Besten?
->
-> Les escribo porque monté sistemas de atención automática para concesionarias: un
-> asistente que responde consultas por WhatsApp e Instagram las 24 horas, agenda test
-> drives y toma los datos del usado a entregar, y recién ahí le pasa el lead al vendedor.
->
-> Con el ticket de una unidad Mercedes se paga solo muy rápido. ¿Les interesa que les
-> muestre cómo queda funcionando?
 
 ### Sileo Hotel
 
 > Hola, ¿hablo con recepción de Sileo?
 >
-> Quería llegar a quien maneja las reservas. Trabajo con hoteles boutique de Recoleta
-> pasando reservas de OTA a canal directo: web propia con motor de reserva y un asistente
-> que responde disponibilidad y tarifas por WhatsApp e Instagram las 24 horas.
+> Un gusto, mi nombre es Franco. Me dedico a hacer automatizaciones para empresas y sitios
+> web que ayudan a la conversión orgánica.
 >
-> Dos reservas directas por semana más ya cubren de sobra lo que hoy se va en comisión.
-> ¿Les puedo mostrar los números sobre Sileo?
+> Vi que hoy toda la reserva pasa por teléfono y por las OTAs. ¿Te interesaría ver una
+> muestra de cómo podría quedar la página del hotel?
 
-### Fertilis
+### Besten Mercedes Benz — ventas San Fernando
 
-> Hola, buenas tardes. Quería llegar a quien maneja la comunicación de Fertilis.
+> Hola, ¿con quién puedo hablar del área comercial?
 >
-> Armo sistemas de atención para centros de alta complejidad: un asistente responde las
-> dudas frecuentes por WhatsApp con el tono que el tema pide, agenda la primera consulta
-> y sostiene el seguimiento de las parejas que consultaron y todavía no decidieron.
+> Un gusto, mi nombre es Franco. Hago automatizaciones y sitios web para concesionarias.
 >
-> Esa etapa intermedia es donde más se pierde. ¿Les interesa verlo?
+> Vi que tienen cuatro sucursales y cada consulta entra por un WhatsApp distinto.
+> ¿Te interesaría ver una muestra de cómo podría quedar la página?
 
-### Auta — por Instagram (@auta.com.ar) o formulario del sitio
+### Puerto & Cía — Instagram @puertoycia
 
-> Hola, equipo de Auta. Quería llegar a quien maneja la parte comercial.
+> Hola, un gusto. Mi nombre es Franco.
 >
-> Monté cotizadores conversacionales para compra-venta de usados: el que quiere vender
-> su auto manda marca, modelo, año y kilómetros por WhatsApp, recibe un rango al
-> instante y agenda la inspección solo. Al equipo le llegan únicamente los casos que
-> valen la visita.
+> Me dedico a hacer automatizaciones para empresas y sitios web que ayudan a la conversión
+> orgánica.
 >
-> Es la promesa de transparencia que ya tienen escrita, pero funcionando a las once de
-> la noche. ¿Se lo muestro?
+> Los encontré buscando inmobiliarias de lujo en Buenos Aires y vi que toda la marca vive
+> acá en Instagram. ¿Les interesaría ver una muestra de cómo podría quedar su página?
 
-## Las dos cuentas sin web, para Instagram
+### Morelia Caballito — Instagram @morelia_restaurant
 
-Son las de gancho más fuerte de toda la lista y no hay que buscarles el dolor.
-
-### Puerto & Cía — @puertoycia
-
-> Hola. Los encontré buscando inmobiliarias de lujo en Buenos Aires y me llamó la
-> atención que todo el posicionamiento de Puerto & Cía viva solo en Instagram.
+> Hola, un gusto. Mi nombre es Franco.
 >
-> Para un cliente que está por decidir una operación de siete cifras, no encontrar un
-> sitio propio pesa. Armo webs de marca para inmobiliarias boutique, con buscador de
-> propiedades y un asistente que califica al comprador antes de que le llegue al asesor.
+> Hago automatizaciones y sitios web que ayudan a la conversión orgánica.
 >
-> ¿Les interesa que les muestre cómo se vería?
+> Vi que las reservas dependen de que alguien conteste por acá. ¿Te interesaría ver una
+> muestra de cómo podría quedar la página del restaurante?
 
-### Morelia Caballito — @morelia_restaurant
+### Fertivitro — WhatsApp, en portugués
 
-> Hola. Les escribo porque Morelia no tiene web propia y hoy todas las reservas dependen
-> de que alguien conteste el Instagram.
+> Olá, prazer. Meu nome é Franco.
 >
-> Armo sitios con reserva directa y un asistente que toma reservas y pedidos por WhatsApp
-> e Instagram las 24 horas, también cuando el salón está lleno.
+> Eu faço automações para empresas e sites que ajudam na conversão orgânica.
 >
-> ¿Quieren que les muestre cómo queda?
+> Vi que todo o primeiro contato de vocês passa por telefone e WhatsApp. Vocês teriam
+> interesse em ver uma amostra de como a página poderia ficar?
 
-## Manejo de la objeción de precio
+### Conrad Properties — WhatsApp, en inglés
 
-Cuando pregunten cuánto sale, el precio no se defiende: se compara contra lo que ya
-pierden.
-
-- **Hotel**: una comisión de OTA sobre dos reservas.
-- **Concesionaria**: una fracción del margen de una sola unidad.
-- **Clínica**: menos de lo que deja un paciente.
-- **Inmobiliaria**: una fracción de una comisión.
-
-## Lección para la próxima tanda
-
-No inventar direcciones. Leer la publicada en el sitio antes de enviar. Tres rebotes en
-una mañana desde una casilla nueva es un riesgo real de reputación para el dominio.
+> Hello, nice to meet you. My name is Franco.
+>
+> I build automations for businesses, and websites that help with organic conversion.
+>
+> I was looking at villas in Koh Samui and found you. Would you be interested in seeing a
+> sample of how your page could look?

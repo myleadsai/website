@@ -46,12 +46,43 @@ sitio del prospecto y escribir el guion; el envío por esos canales lo hace el d
 
 ## Reglas de escritura de los mensajes
 
-- Español rioplatense para Argentina y Uruguay, neutro para el resto de LatAm.
-- Máximo seis líneas. El primer mensaje busca respuesta, no vende.
-- Abrir con una observación concreta del negocio del prospecto, no con una presentación.
-- Una sola pregunta al final.
-- El precio nunca se defiende solo: se compara contra lo que el prospecto ya pierde
-  (comisión de OTA, margen de una unidad, valor de un paciente, una comisión inmobiliaria).
+Escribe **Franco**, en primera persona. Nunca "MyLeads" como remitente impersonal, nunca
+"armamos" ni "trabajamos con": es "me dedico a", "hago", "te muestro".
+
+Molde del primer mensaje, en este orden:
+
+1. Saludo y nombre. "Hola, un gusto. Mi nombre es Franco."
+2. Qué hago, en una línea: automatizaciones para empresas y sitios web que ayudan a la
+   conversión orgánica.
+3. Una sola observación concreta de ese negocio en particular. Corta. Es lo que prueba que
+   el mail no es masivo.
+4. La pregunta: si les interesa ver una muestra de cómo podría quedar su página.
+
+Reglas duras:
+
+- **Máximo cinco líneas.** Si no entra, sobra.
+- Directo pero humano. Nada de porcentajes, estadísticas de la industria ni "el 60% de las
+  consultas". Eso suena a folleto.
+- Tutear en Argentina y Uruguay. Usted o forma neutra en México, Colombia y España según
+  el rubro. Formal en Emiratos y en estudios jurídicos.
+- El primer mensaje busca respuesta, no vende. No poner precio, no poner links.
+- Una sola pregunta, al final.
+
+**Idioma según el destinatario, siempre:**
+
+| Mercado | Idioma |
+|---|---|
+| Argentina, México, Colombia, Chile, Panamá, Uruguay, España | Español |
+| Brasil | Portugués |
+| Estados Unidos, Reino Unido, Emiratos, Tailandia | Inglés |
+| Francia | Francés |
+| Italia | Italiano |
+
+Si el prospecto responde, recién ahí entra el precio, y nunca solo: se compara contra lo
+que ya pierde (comisión de OTA, margen de una unidad, valor de un paciente, una comisión
+inmobiliaria).
+
+Nunca mandar un segundo mail distinto el mismo día a un prospecto que ya recibió uno.
 
 ## Calificación de leads
 
