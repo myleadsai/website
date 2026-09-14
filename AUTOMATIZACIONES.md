@@ -4,7 +4,7 @@ Dos piezas nuevas en el sitio:
 
 | Página | Para qué sirve | Quién la usa |
 |---|---|---|
-| `automatizaciones.html` | Catálogo de las 9 automatizaciones, con configurador y descarga del blueprint. | Público (venta) y equipo |
+| `automatizaciones.html` | Catálogo de las 13 automatizaciones, con configurador y descarga del blueprint. | Público (venta) y equipo |
 | `leads.html` | Consola interna de captación: puntúa y filtra leads contra nuestro cliente ideal. | Solo el equipo |
 
 Ambas son HTML estático: funcionan tal cual en GitHub Pages, sin backend ni build.
@@ -13,7 +13,7 @@ Ambas son HTML estático: funcionan tal cual en GitHub Pages, sin backend ni bui
 
 ## 1. Catálogo de automatizaciones
 
-Las 9 automatizaciones viven en **`assets/automations.js`**. Ese archivo es la única
+Las 13 automatizaciones viven en **`assets/automations.js`**. Ese archivo es la única
 fuente de verdad: de ahí salen las tarjetas del catálogo, el configurador y el
 blueprint que se descarga.
 
@@ -57,9 +57,14 @@ Tipos de `params` disponibles: `text`, `textarea`, `number`, `email`, `url`,
 Los `type` de los nodos se traducen a nodos de n8n según el mapa `NODE_TYPES`
 al principio del archivo. Si agregás un tipo nuevo, sumalo también ahí.
 
-El catálogo, los filtros y el configurador se regeneran solos. Lo único que se
-duplica a mano es la lista resumida de la home (`index.html`, sección
-`#automatizaciones`): si agregás una automatización, sumá ahí su tarjeta.
+El catálogo, los filtros, el contador del título y el configurador se regeneran
+solos. Lo único que se duplica a mano es la lista resumida de la home
+(`index.html`, sección `#automatizaciones`): si agregás una automatización, sumá
+ahí su tarjeta y actualizá el número del título de esa sección.
+
+Las categorías actuales son: Prospección, Contenido, Atención y reservas,
+Publicidad y creativos, Operaciones y Reputación. Si usás una categoría nueva,
+el filtro aparece solo.
 
 ---
 

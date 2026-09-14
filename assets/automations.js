@@ -23,7 +23,9 @@
     sheets:    { n8n: 'n8n-nodes-base.googleSheets',    v: 4.5 },
     calendar:  { n8n: 'n8n-nodes-base.googleCalendar',  v: 1.3 },
     crm:       { n8n: 'n8n-nodes-base.hubspot',         v: 2.1 },
-    wait:      { n8n: 'n8n-nodes-base.wait',            v: 1.1 }
+    wait:      { n8n: 'n8n-nodes-base.wait',            v: 1.1 },
+    gmailTrigger:  { n8n: 'n8n-nodes-base.gmailTrigger',       v: 1.2 },
+    driveTrigger:  { n8n: 'n8n-nodes-base.googleDriveTrigger', v: 1   }
   };
 
   /* Catálogo. `params` define TODO lo que el cliente puede personalizar. */
@@ -281,6 +283,124 @@
         { key: 'cuerpo', label: 'Cuerpo del email', type: 'textarea', def: 'Hola {{nombre}},\n\nVi lo que están haciendo en {{empresa}} y se me ocurrió una forma de que capten clientes sin depender de referidos.\n\n¿Te viene bien una llamada de 15 minutos esta semana?\n\nFranco — Myleads.ai', help: 'Variables disponibles: {{nombre}}, {{empresa}}, {{cargo}}, {{web}}.' },
         { key: 'soloVerificados', label: 'Enviar solo a emails verificados', type: 'toggle', def: true, help: 'Muy recomendado: protege la reputación de tu dominio.' },
         { key: 'sincronizarConsola', label: 'Volcar resultados a la Consola de Leads', type: 'toggle', def: true }
+      ]
+    },
+    {
+      id: 'repurposer',
+      num: 10,
+      name: 'Repurposer de Contenido',
+      tagline: 'Un video se convierte en veinte publicaciones.',
+      category: 'Contenido',
+      summary: 'Subís un video largo y él solo lo corta en clips, transcribe, escribe los textos, arma los carruseles y los hilos, y los deja programados. Una grabación, semanas de contenido.',
+      useCase: 'Cada consultoría grupal o webinar que grabamos alimenta el calendario de las dos semanas siguientes sin que nadie edite nada a mano.',
+      integrations: ['Google Drive', 'Deepgram', 'OpenAI', 'Buffer / Metricool'],
+      nodes: [
+        { icon: '📹', label: 'Video nuevo', sub: 'Google Drive', type: 'driveTrigger' },
+        { icon: '🎧', label: 'Transcribir', sub: 'Deepgram', type: 'http' },
+        { icon: '✂️', label: 'Clips y textos', sub: 'OpenAI', type: 'ai' },
+        { icon: '📚', label: 'Armar piezas', sub: 'Carruseles e hilos', type: 'ai' },
+        { icon: '📤', label: 'Programar', sub: 'Buffer', type: 'http' }
+      ],
+      params: [
+        { key: 'carpeta', label: 'Carpeta de Drive a vigilar', type: 'text', def: 'Grabaciones / Consultorías', help: 'Cuando aparece un video nuevo ahí, arranca solo.' },
+        { key: 'clipsPorVideo', label: 'Clips por video', type: 'number', def: 8 },
+        { key: 'duracionClip', label: 'Duración de cada clip', type: 'select', options: ['15 a 30 segundos', '30 a 60 segundos', '60 a 90 segundos'], def: '30 a 60 segundos' },
+        { key: 'piezas', label: 'Piezas a generar', type: 'multi', options: ['Clips verticales', 'Carrusel', 'Hilo para X', 'Post de LinkedIn', 'Newsletter', 'Artículo de blog'], def: ['Clips verticales', 'Carrusel', 'Post de LinkedIn'] },
+        { key: 'canales', label: 'Dónde publicar', type: 'multi', options: ['Instagram', 'TikTok', 'YouTube Shorts', 'LinkedIn', 'X', 'Facebook'], def: ['Instagram', 'TikTok', 'LinkedIn'] },
+        { key: 'idioma', label: 'Idioma de la transcripción', type: 'select', options: ['Español', 'Inglés', 'Portugués', 'Detección automática'], def: 'Español' },
+        { key: 'tono', label: 'Tono de los textos', type: 'select', options: ['Cercano y directo', 'Autoridad / experto', 'Provocador', 'Formal'], def: 'Cercano y directo' },
+        { key: 'criterioClip', label: 'Qué momentos priorizar', type: 'textarea', def: 'Frases con una idea completa y autosuficiente, respuestas a objeciones y momentos con dato o cifra concreta.', help: 'Así elige qué cortar y qué descartar.' },
+        { key: 'programador', label: 'Herramienta de publicación', type: 'select', options: ['Buffer', 'Metricool', 'Publicación directa por API', 'Solo dejar borradores'], def: 'Buffer' },
+        { key: 'subtitulos', label: 'Subtítulos quemados en los clips', type: 'toggle', def: true },
+        { key: 'aprobacion', label: 'Revisar antes de programar', type: 'toggle', def: true },
+        { key: 'cta', label: 'CTA al cierre', type: 'text', def: 'Link en la bio para agendar tu llamada gratuita.' }
+      ]
+    },
+    {
+      id: 'facturas',
+      num: 11,
+      name: 'Piloto Automático de Facturas',
+      tagline: 'Lee, registra y controla tus facturas por vos.',
+      category: 'Operaciones',
+      summary: 'Lee cada factura que llega por email o en PDF, saca los números, los carga en tu planilla y avisa de todo lo que está por vencer o ya venció. La administración que nadie quiere hacer, resuelta.',
+      useCase: 'Nos saca de encima la carga manual de facturas y nos avisa de los vencimientos antes de que se transformen en un problema.',
+      integrations: ['Gmail', 'OpenAI', 'Google Sheets', 'QuickBooks'],
+      nodes: [
+        { icon: '📨', label: 'Factura nueva', sub: 'Gmail', type: 'gmailTrigger' },
+        { icon: '🔍', label: 'Extraer campos', sub: 'Leer la factura', type: 'ai' },
+        { icon: '📊', label: 'Registrar fila', sub: 'Google Sheets', type: 'sheets' },
+        { icon: '⏰', label: '¿Vencida?', sub: 'Filtro', type: 'filter' },
+        { icon: '🔔', label: 'Enviar alerta', sub: 'Gmail', type: 'gmail' }
+      ],
+      params: [
+        { key: 'buzon', label: 'Buzón a vigilar', type: 'email', def: 'myleads.ia@gmail.com' },
+        { key: 'etiqueta', label: 'Etiqueta o carpeta', type: 'text', def: 'Facturas', help: 'Solo mira los emails con esta etiqueta. Dejalo vacío para mirar todo el buzón.' },
+        { key: 'origen', label: 'De dónde leer', type: 'multi', options: ['Adjuntos PDF', 'Cuerpo del email', 'Carpeta de Google Drive'], def: ['Adjuntos PDF', 'Cuerpo del email'] },
+        { key: 'campos', label: 'Campos a extraer', type: 'textarea', def: 'Proveedor\nNúmero de factura\nFecha de emisión\nFecha de vencimiento\nSubtotal\nImpuestos\nTotal\nMoneda', help: 'Uno por línea. Se convierten en columnas de la planilla.' },
+        { key: 'destino', label: 'Dónde registrarlas', type: 'select', options: ['Google Sheets', 'Notion', 'QuickBooks', 'Airtable'], def: 'Google Sheets' },
+        { key: 'hoja', label: 'Nombre de la planilla u hoja', type: 'text', def: 'Facturas 2026' },
+        { key: 'moneda', label: 'Moneda por defecto', type: 'select', options: ['ARS', 'USD', 'EUR', 'MXN', 'COP'], def: 'USD', help: 'Se usa solo cuando la factura no la aclara.' },
+        { key: 'avisarAntes', label: 'Avisar cuántos días antes del vencimiento', type: 'number', def: 3 },
+        { key: 'alertaA', label: 'A quién avisar', type: 'email', def: 'myleads.ia@gmail.com' },
+        { key: 'resumen', label: 'Resumen periódico', type: 'select', options: ['Diario', 'Semanal', 'Mensual', 'Solo alertas de vencimiento'], def: 'Semanal' },
+        { key: 'revisarDudosas', label: 'Marcar para revisión si no puede leer un campo', type: 'toggle', def: true, help: 'Muy recomendado: evita que se registre un importe equivocado sin que nadie lo note.' }
+      ]
+    },
+    {
+      id: 'resenas',
+      num: 12,
+      name: 'Respuesta a Reseñas',
+      tagline: 'Contesta las reseñas con la voz de tu marca.',
+      category: 'Reputación',
+      summary: 'Cuando entra una reseña nueva, redacta la respuesta en el tono de tu marca antes de que la veas. Vos aprobás, o la dejás publicar sola. Reputación que se mantiene sin vos.',
+      useCase: 'Ninguna reseña se queda sin responder, y las negativas nos llegan al instante en vez de descubrirlas una semana después.',
+      integrations: ['Google Business', 'Trustpilot', 'OpenAI', 'Gmail'],
+      nodes: [
+        { icon: '⭐', label: 'Reseña nueva', sub: 'Webhook', type: 'webhook' },
+        { icon: '✍️', label: 'Redactar respuesta', sub: 'OpenAI', type: 'ai' },
+        { icon: '✅', label: '¿Aprobar?', sub: 'Filtro', type: 'filter' },
+        { icon: '📢', label: 'Publicar respuesta', sub: 'HTTP Request', type: 'http' }
+      ],
+      params: [
+        { key: 'fuentes', label: 'Dónde vigilar reseñas', type: 'multi', options: ['Google Business', 'Trustpilot', 'Facebook', 'Instagram', 'TripAdvisor', 'App Store / Play Store'], def: ['Google Business', 'Trustpilot'] },
+        { key: 'vozMarca', label: 'Voz de la marca', type: 'textarea', def: 'Cercana y agradecida, tuteando. Sin sonar a plantilla: siempre menciona algo concreto de lo que dijo la persona.' },
+        { key: 'idioma', label: 'Idioma de la respuesta', type: 'select', options: ['El mismo idioma de la reseña', 'Siempre español', 'Siempre inglés'], def: 'El mismo idioma de la reseña' },
+        { key: 'publicacion', label: 'Cuándo publicar', type: 'select', options: ['Aprobar siempre antes de publicar', 'Publicar solas las positivas, aprobar las negativas', 'Publicar todas automáticamente'], def: 'Publicar solas las positivas, aprobar las negativas', help: 'Lo más seguro es dejar que una persona mire siempre las negativas.' },
+        { key: 'umbralEscalada', label: 'Escalar si la reseña tiene esta cantidad de estrellas o menos', type: 'number', def: 3 },
+        { key: 'notificarA', label: 'A quién notificar una reseña negativa', type: 'email', def: 'myleads.ia@gmail.com' },
+        { key: 'longitud', label: 'Largo de la respuesta', type: 'select', options: ['Breve (1 o 2 frases)', 'Media (un párrafo)', 'Detallada'], def: 'Breve (1 o 2 frases)' },
+        { key: 'firma', label: 'Firma', type: 'text', def: 'El equipo de Myleads.ai' },
+        { key: 'prohibido', label: 'Qué nunca debe decir', type: 'textarea', def: 'No admitir responsabilidad legal, no prometer reembolsos ni compensaciones, no discutir con el cliente y no dar datos personales de nadie.' }
+      ]
+    },
+    {
+      id: 'tickets',
+      num: 13,
+      name: 'Triage de Tickets',
+      tagline: 'Clasifica y enruta cada consulta de soporte.',
+      category: 'Atención y reservas',
+      summary: 'Cada consulta que entra se clasifica, se etiqueta y se manda a quien corresponde. Las fáciles las contesta solo. El soporte escala sin que crezca el equipo.',
+      useCase: 'Las preguntas repetidas sobre precios, acceso y facturación se responden solas, y al equipo solo le llega lo que de verdad necesita una persona.',
+      integrations: ['Gmail', 'OpenAI', 'Google Sheets', 'Slack'],
+      nodes: [
+        { icon: '🎫', label: 'Ticket nuevo', sub: 'Gmail', type: 'gmailTrigger' },
+        { icon: '🏷️', label: 'Clasificar', sub: 'OpenAI', type: 'ai' },
+        { icon: '🔀', label: 'Enrutar', sub: 'Switch', type: 'router' },
+        { icon: '↩️', label: 'Responder', sub: 'Gmail', type: 'gmail' },
+        { icon: '📊', label: 'Registrar', sub: 'Google Sheets', type: 'sheets' }
+      ],
+      params: [
+        { key: 'buzon', label: 'Buzón de soporte', type: 'email', def: 'myleads.ia@gmail.com' },
+        { key: 'canales', label: 'Canales de entrada', type: 'multi', options: ['Email', 'Formulario web', 'WhatsApp', 'Instagram DM', 'Chat del sitio'], def: ['Email', 'Formulario web'] },
+        { key: 'categorias', label: 'Categorías', type: 'textarea', def: 'Acceso y contraseñas\nFacturación y pagos\nContenido del programa\nSoporte técnico\nBaja o reembolso\nOtro', help: 'Una por línea. Son las etiquetas con las que clasifica.' },
+        { key: 'autoResponde', label: 'Qué categorías responde solo', type: 'textarea', def: 'Acceso y contraseñas\nContenido del programa', help: 'El resto se deriva a una persona. Dejá acá solo lo que tenga una respuesta clara y siempre igual.' },
+        { key: 'baseConocimiento', label: 'Base de conocimiento', type: 'textarea', def: 'FAQ del sitio, detalle del programa, precios, formas de pago, cómo acceder a la plataforma y política de reembolso.' },
+        { key: 'escalarA', label: 'A quién derivar lo que no resuelve', type: 'text', def: 'Equipo de soporte — Slack #soporte' },
+        { key: 'sla', label: 'Avisar si un ticket lleva sin respuesta (horas)', type: 'number', def: 24 },
+        { key: 'idioma', label: 'Idioma de la respuesta', type: 'select', options: ['El mismo idioma del ticket', 'Siempre español', 'Siempre inglés'], def: 'El mismo idioma del ticket' },
+        { key: 'firma', label: 'Firma de las respuestas', type: 'text', def: 'Equipo de Myleads.ai' },
+        { key: 'urgenteSi', label: 'Marcar como urgente cuando…', type: 'textarea', def: 'El cliente pide la baja, menciona un cobro incorrecto o amenaza con un reclamo.' },
+        { key: 'aprobacion', label: 'Revisar las respuestas automáticas antes de enviarlas', type: 'toggle', def: false, help: 'Activalo las primeras semanas hasta que confíes en las respuestas.' }
       ]
     }
   ];

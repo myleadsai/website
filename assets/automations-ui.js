@@ -312,6 +312,10 @@
   });
 
   /* --------------------------------- inicio -------------------------------- */
+  /* El título toma el número del catálogo, así no queda desfasado al sumar una. */
+  var countEl = document.getElementById('auto-count');
+  if (countEl) countEl.textContent = String(API.list.length);
+
   renderFilters();
   renderCatalog(null);
 

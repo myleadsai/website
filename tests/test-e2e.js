@@ -33,7 +33,7 @@ require('fs').mkdirSync(OUT, { recursive: true });
   await page.goto(BASE + '/index.html', { waitUntil: 'networkidle' });
   ok('barra de navegación presente', await page.locator('nav.site-nav').count() === 1);
   ok('sección de automatizaciones presente', await page.locator('#automatizaciones').count() === 1);
-  ok('9 tarjetas de automatización', await page.locator('#automatizaciones .service-card').count() === 9, await page.locator('#automatizaciones .service-card').count());
+  ok('13 tarjetas de automatización', await page.locator('#automatizaciones .service-card').count() === 13, await page.locator('#automatizaciones .service-card').count());
   ok('link al catálogo', await page.locator('a[href="automatizaciones.html"]').count() >= 1);
   ok('link a la consola', await page.locator('a[href="leads.html"]').count() >= 1);
   ok('acordeón FAQ sigue funcionando', await (async () => {
@@ -46,14 +46,16 @@ require('fs').mkdirSync(OUT, { recursive: true });
   // ---------- catálogo ----------
   console.log('— automatizaciones.html —');
   await page.goto(BASE + '/automatizaciones.html', { waitUntil: 'networkidle' });
-  ok('9 tarjetas en el catálogo', await page.locator('.auto-card').count() === 9, await page.locator('.auto-card').count());
+  ok('13 tarjetas en el catálogo', await page.locator('.auto-card').count() === 13, await page.locator('.auto-card').count());
   ok('filtros por categoría', await page.locator('.filter-btn').count() >= 4, await page.locator('.filter-btn').count());
   await page.locator('.filter-btn', { hasText: 'Prospección' }).click();
   await page.waitForTimeout(200);
   ok('filtro Prospección muestra 2', await page.locator('.auto-card').count() === 2, await page.locator('.auto-card').count());
   await page.locator('.filter-btn').first().click();
   await page.waitForTimeout(200);
-  ok('volver a Todas muestra 9', await page.locator('.auto-card').count() === 9);
+  ok('volver a Todas muestra 13', await page.locator('.auto-card').count() === 13);
+  ok('el contador del título coincide con el catálogo',
+     (await page.locator('#auto-count').textContent()) === String(await page.locator('.auto-card').count()));
   await page.screenshot({ path: OUT + '/catalogo.png', fullPage: true });
 
   // abrir configurador
