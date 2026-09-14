@@ -139,7 +139,7 @@ cuenta si en algún momento se le agrega un backend.
 
 ### Cómo se conecta con las automatizaciones
 
-La automatización **Generación de Leads IA** y el **Lead Scraper 24/7** usan la misma
+La automatización **Generación de Leads IA** y el **Captador de Leads 24/7** usan la misma
 escala de 0 a 100. El campo *Puntaje mínimo para contactar* del configurador debe
 coincidir con el umbral que uses acá, para que el filtro sea el mismo de punta a punta:
 el scraper busca, la consola califica, y solo lo calificado recibe outreach.

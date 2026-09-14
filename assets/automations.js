@@ -45,7 +45,7 @@
         { icon: '📋', label: 'Consultar disponibilidad', sub: 'Herramientas', type: 'http' },
         { icon: '📅', label: 'Agendar cita', sub: 'Google Calendar', type: 'calendar' },
         { icon: '✉️', label: 'Enviar confirmación', sub: 'Gmail', type: 'gmail' },
-        { icon: '🔀', label: 'Escalar a humano', sub: 'Router', type: 'router' },
+        { icon: '🔀', label: 'Escalar a humano', sub: 'Enrutador', type: 'router' },
         { icon: '👤', label: 'Crear contacto CRM', sub: 'HubSpot', type: 'crm' }
       ],
       params: [
@@ -75,7 +75,7 @@
         { icon: '🧠', label: 'Investigar y enriquecer', sub: 'OpenAI', type: 'ai' },
         { icon: '🔽', label: 'Calificar leads', sub: 'Filtro ICP', type: 'filter' },
         { icon: '✉️', label: 'Enviar email', sub: 'Gmail', type: 'gmail' },
-        { icon: '🕒', label: 'Seguimientos', sub: 'Scheduler', type: 'wait' },
+        { icon: '🕒', label: 'Seguimientos', sub: 'Programador', type: 'wait' },
         { icon: '📊', label: 'Registrar resultado', sub: 'Google Sheets', type: 'sheets' }
       ],
       params: [
@@ -101,13 +101,13 @@
       name: 'Generador de Anuncios UGC',
       tagline: 'Ingeniería inversa de anuncios virales, reescritos con tu mensaje.',
       category: 'Publicidad y creativos',
-      summary: 'Le pasas el link de un anuncio que está funcionando. La IA lo desarma (hook, guion, formato, ritmo), lo reconstruye con el mensaje de tu marca y te devuelve 5 prompts listos para generar el video.',
+      summary: 'Le pasás el enlace de un anuncio que está funcionando. La IA lo desarma (gancho, guion, formato, ritmo), lo reconstruye con el mensaje de tu marca y te devuelve 5 prompts listos para generar el video.',
       useCase: 'Lo usamos para producir creativos de campaña sin depender de un editor: partimos de lo que ya funciona en el nicho y lo adaptamos a nuestra oferta.',
       integrations: ['OpenAI', 'Sora 2 / Veo', 'Apify', 'Google Drive'],
       nodes: [
         { icon: '🔗', label: 'Link del anuncio', sub: 'Formulario', type: 'form' },
         { icon: '🔍', label: 'Analizar anuncio', sub: 'Extraer elementos', type: 'http' },
-        { icon: '💡', label: 'Obtener insights', sub: 'Hook, guion, formato', type: 'ai' },
+        { icon: '💡', label: 'Obtener insights', sub: 'Gancho, guion, formato', type: 'ai' },
         { icon: '✨', label: 'Generar prompts', sub: '5 prompts de video', type: 'ai' },
         { icon: '🎬', label: 'Crear UGC', sub: 'Específico de marca', type: 'http' },
         { icon: '📁', label: 'Guardar salida', sub: 'Google Drive', type: 'http' }
@@ -135,7 +135,7 @@
       integrations: ['OpenAI', 'ElevenLabs', 'Pexels / stock', 'TikTok', 'Instagram', 'YouTube'],
       nodes: [
         { icon: '📝', label: 'Escribir guion', sub: 'Generador IA', type: 'ai' },
-        { icon: '🎥', label: 'Crear video', sub: 'Avatares / stock', type: 'http' },
+        { icon: '🎥', label: 'Crear video', sub: 'Avatares y archivo', type: 'http' },
         { icon: '🔊', label: 'Voz en off', sub: 'ElevenLabs', type: 'http' },
         { icon: '💬', label: 'Subtítulos', sub: 'Automáticos', type: 'http' },
         { icon: '📤', label: 'Publicar', sub: 'Multicanal', type: 'http' },
@@ -146,10 +146,10 @@
         { key: 'videosPorSemana', label: 'Videos por semana', type: 'number', def: 7 },
         { key: 'horaPublicacion', label: 'Hora de publicación', type: 'text', def: '19:00', help: 'Hora local del negocio.' },
         { key: 'duracion', label: 'Duración objetivo (seg)', type: 'number', def: 45 },
-        { key: 'estiloVisual', label: 'Estilo visual', type: 'select', options: ['Stock cinematográfico', 'Animación motion graphics', 'Capturas de pantalla', 'Mixto'], def: 'Mixto' },
+        { key: 'estiloVisual', label: 'Estilo visual', type: 'select', options: ['Material de archivo cinematográfico', 'Animación motion graphics', 'Capturas de pantalla', 'Mixto'], def: 'Mixto' },
         { key: 'voz', label: 'Voz en off', type: 'select', options: ['Femenina cálida', 'Masculina grave', 'Neutra informativa', 'Sin voz (solo texto)'], def: 'Masculina grave' },
         { key: 'canales', label: 'Canales de publicación', type: 'multi', options: ['TikTok', 'Instagram Reels', 'YouTube Shorts', 'Facebook Reels', 'LinkedIn'], def: ['TikTok', 'Instagram Reels', 'YouTube Shorts'] },
-        { key: 'cta', label: 'CTA al final del video', type: 'text', def: 'Link en la bio para agendar tu llamada gratuita.' },
+        { key: 'cta', label: 'CTA al final del video', type: 'text', def: 'Enlace en la biografía para agendar tu llamada gratuita.' },
         { key: 'aprobacion', label: 'Requiere aprobación antes de publicar', type: 'toggle', def: true, help: 'Recomendado al arrancar: revisas el guion antes de que salga.' }
       ]
     },
@@ -186,11 +186,11 @@
       name: 'Chatbot FAQ Multilingüe',
       tagline: 'Responde en el idioma del cliente, al instante, en tu web.',
       category: 'Atención y reservas',
-      summary: 'Cuando alguien escribe desde tu web o un link compartido, detecta su idioma, responde con tu base de conocimiento, gestiona las repreguntas y, si el interés es alto, deriva a agendar una llamada.',
+      summary: 'Cuando alguien escribe desde tu web o un enlace compartido, detecta su idioma, responde con tu base de conocimiento, gestiona las repreguntas y, si el interés es alto, deriva a agendar una llamada.',
       useCase: 'Va embebido en esta misma página: responde dudas del programa 24/7 y empuja hacia el calendario en vez de dejar la consulta enfriarse.',
       integrations: ['OpenAI', 'Base de conocimiento', 'Calendly', 'Google Sheets'],
       nodes: [
-        { icon: '💬', label: 'Mensaje del usuario', sub: 'Web / link', type: 'chat' },
+        { icon: '💬', label: 'Mensaje del usuario', sub: 'Web / enlace', type: 'chat' },
         { icon: '🌐', label: 'Detectar idioma', sub: 'Automático', type: 'ai' },
         { icon: '🧠', label: 'Responder', sub: 'Base de conocimiento', type: 'agent' },
         { icon: '📤', label: 'Enviar respuesta', sub: 'En su idioma', type: 'set' },
@@ -202,7 +202,7 @@
         { key: 'idiomas', label: 'Idiomas soportados', type: 'multi', options: ['Español', 'Inglés', 'Portugués', 'Francés', 'Alemán', 'Italiano', 'Detección automática (+20)'], def: ['Español', 'Inglés', 'Portugués', 'Detección automática (+20)'] },
         { key: 'baseConocimiento', label: 'Base de conocimiento', type: 'textarea', def: 'FAQ de la página, detalle del programa Conocimiento Exitoso, precios, duración, modalidad y política de reembolso.', help: 'Qué puede responder. Todo lo que no esté aquí lo deriva a una persona.' },
         { key: 'tono', label: 'Tono', type: 'select', options: ['Cercano', 'Profesional', 'Comercial'], def: 'Cercano' },
-        { key: 'linkAgenda', label: 'Link de agenda', type: 'url', def: 'https://calendly.com/myleads-ia/30min' },
+        { key: 'linkAgenda', label: 'Enlace de agenda', type: 'url', def: 'https://calendly.com/myleads-ia/30min' },
         { key: 'capturarEmail', label: 'Pedir email antes de responder', type: 'toggle', def: false, help: 'Sube la captura de leads pero baja la cantidad de conversaciones.' },
         { key: 'derivarHumano', label: 'Derivar a humano si no sabe', type: 'toggle', def: true },
         { key: 'noResponder', label: 'Temas que no debe tratar', type: 'textarea', def: 'Asesoramiento legal, fiscal o médico. Promesas de resultados económicos.' }
@@ -214,18 +214,18 @@
       name: 'Generador de Ideas Virales para YouTube',
       tagline: 'Ideas de contenido respaldadas por datos reales de tu nicho.',
       category: 'Contenido',
-      summary: 'Trae los videos con mejor rendimiento de tu nicho, los analiza (títulos, keywords, engagement) y te devuelve ideas frescas con títulos, ángulos y palabras clave que tu audiencia ya está buscando.',
+      summary: 'Trae los videos con mejor rendimiento de tu nicho, los analiza (títulos, palabras clave, interacción) y te devuelve ideas frescas con títulos, ángulos y palabras clave que tu audiencia ya está buscando.',
       useCase: 'Antes de grabar cualquier cosa, revisamos qué ángulos están traccionando. Menos adivinar, más datos.',
       integrations: ['YouTube Data API', 'OpenAI', 'Google Sheets'],
       nodes: [
         { icon: '▶️', label: 'Traer videos top', sub: 'YouTube API', type: 'http' },
-        { icon: '📊', label: 'Analizar contenido', sub: 'Títulos y engagement', type: 'ai' },
+        { icon: '📊', label: 'Analizar contenido', sub: 'Títulos e interacción', type: 'ai' },
         { icon: '🧠', label: 'Generar ideas', sub: 'Con IA', type: 'ai' },
         { icon: '💡', label: 'Entregar ideas', sub: 'Títulos y ángulos', type: 'sheets' }
       ],
       params: [
         { key: 'nicho', label: 'Nicho', type: 'text', def: 'Negocios online, infoproductos y automatización' },
-        { key: 'canales', label: 'Canales de referencia', type: 'textarea', def: '', placeholder: 'Un canal o URL por línea (opcional)', help: 'Si lo dejas vacío, busca por nicho.' },
+        { key: 'canales', label: 'Canales de referencia', type: 'textarea', def: '', placeholder: 'Un canal o URL por línea (opcional)', help: 'Si lo dejás vacío, busca por nicho.' },
         { key: 'idioma', label: 'Idioma de búsqueda', type: 'select', options: ['Español', 'Inglés', 'Ambos'], def: 'Español' },
         { key: 'periodo', label: 'Periodo a analizar', type: 'select', options: ['Últimos 7 días', 'Últimos 30 días', 'Últimos 90 días'], def: 'Últimos 30 días' },
         { key: 'cantidadIdeas', label: 'Ideas por ejecución', type: 'number', def: 10 },
@@ -249,7 +249,7 @@
         { icon: '📤', label: 'Exportar video', sub: 'Listo para publicar', type: 'http' }
       ],
       params: [
-        { key: 'avatar', label: 'Avatar', type: 'select', options: ['Avatar de stock (masculino)', 'Avatar de stock (femenino)', 'Avatar propio (clonado)'], def: 'Avatar propio (clonado)' },
+        { key: 'avatar', label: 'Avatar', type: 'select', options: ['Avatar prediseñado (masculino)', 'Avatar prediseñado (femenino)', 'Avatar propio (clonado)'], def: 'Avatar propio (clonado)' },
         { key: 'idiomas', label: 'Idiomas a generar', type: 'multi', options: ['Español', 'Inglés', 'Portugués', 'Francés', 'Italiano'], def: ['Español'] },
         { key: 'duracion', label: 'Duración objetivo (seg)', type: 'number', def: 60 },
         { key: 'formato', label: 'Formato', type: 'select', options: ['Vertical 9:16', 'Horizontal 16:9', 'Cuadrado 1:1', 'Los tres'], def: 'Vertical 9:16' },
@@ -261,7 +261,7 @@
     {
       id: 'lead-scraper',
       num: 9,
-      name: 'Lead Scraper 24/7',
+      name: 'Captador de Leads 24/7',
       tagline: 'Busca leads mientras dormís.',
       category: 'Prospección',
       summary: 'La versión mínima y robusta del motor de prospección: se dispara solo cada día, busca leads frescos, completa los campos que faltan y manda el primer email. Te despertás con respuestas, no con una lista de tareas.',
@@ -288,7 +288,7 @@
     {
       id: 'repurposer',
       num: 10,
-      name: 'Repurposer de Contenido',
+      name: 'Reciclador de Contenido',
       tagline: 'Un video se convierte en veinte publicaciones.',
       category: 'Contenido',
       summary: 'Subís un video largo y él solo lo corta en clips, transcribe, escribe los textos, arma los carruseles y los hilos, y los deja programados. Una grabación, semanas de contenido.',
@@ -305,7 +305,7 @@
         { key: 'carpeta', label: 'Carpeta de Drive a vigilar', type: 'text', def: 'Grabaciones / Consultorías', help: 'Cuando aparece un video nuevo ahí, arranca solo.' },
         { key: 'clipsPorVideo', label: 'Clips por video', type: 'number', def: 8 },
         { key: 'duracionClip', label: 'Duración de cada clip', type: 'select', options: ['15 a 30 segundos', '30 a 60 segundos', '60 a 90 segundos'], def: '30 a 60 segundos' },
-        { key: 'piezas', label: 'Piezas a generar', type: 'multi', options: ['Clips verticales', 'Carrusel', 'Hilo para X', 'Post de LinkedIn', 'Newsletter', 'Artículo de blog'], def: ['Clips verticales', 'Carrusel', 'Post de LinkedIn'] },
+        { key: 'piezas', label: 'Piezas a generar', type: 'multi', options: ['Clips verticales', 'Carrusel', 'Hilo para X', 'Publicación en LinkedIn', 'Newsletter', 'Artículo de blog'], def: ['Clips verticales', 'Carrusel', 'Publicación en LinkedIn'] },
         { key: 'canales', label: 'Dónde publicar', type: 'multi', options: ['Instagram', 'TikTok', 'YouTube Shorts', 'LinkedIn', 'X', 'Facebook'], def: ['Instagram', 'TikTok', 'LinkedIn'] },
         { key: 'idioma', label: 'Idioma de la transcripción', type: 'select', options: ['Español', 'Inglés', 'Portugués', 'Detección automática'], def: 'Español' },
         { key: 'tono', label: 'Tono de los textos', type: 'select', options: ['Cercano y directo', 'Autoridad / experto', 'Provocador', 'Formal'], def: 'Cercano y directo' },
@@ -313,7 +313,7 @@
         { key: 'programador', label: 'Herramienta de publicación', type: 'select', options: ['Buffer', 'Metricool', 'Publicación directa por API', 'Solo dejar borradores'], def: 'Buffer' },
         { key: 'subtitulos', label: 'Subtítulos quemados en los clips', type: 'toggle', def: true },
         { key: 'aprobacion', label: 'Revisar antes de programar', type: 'toggle', def: true },
-        { key: 'cta', label: 'CTA al cierre', type: 'text', def: 'Link en la bio para agendar tu llamada gratuita.' }
+        { key: 'cta', label: 'CTA al cierre', type: 'text', def: 'Enlace en la biografía para agendar tu llamada gratuita.' }
       ]
     },
     {
@@ -359,7 +359,7 @@
         { icon: '⭐', label: 'Reseña nueva', sub: 'Webhook', type: 'webhook' },
         { icon: '✍️', label: 'Redactar respuesta', sub: 'OpenAI', type: 'ai' },
         { icon: '✅', label: '¿Aprobar?', sub: 'Filtro', type: 'filter' },
-        { icon: '📢', label: 'Publicar respuesta', sub: 'HTTP Request', type: 'http' }
+        { icon: '📢', label: 'Publicar respuesta', sub: 'Petición HTTP', type: 'http' }
       ],
       params: [
         { key: 'fuentes', label: 'Dónde vigilar reseñas', type: 'multi', options: ['Google Business', 'Trustpilot', 'Facebook', 'Instagram', 'TripAdvisor', 'App Store / Play Store'], def: ['Google Business', 'Trustpilot'] },
@@ -376,7 +376,7 @@
     {
       id: 'tickets',
       num: 13,
-      name: 'Triage de Tickets',
+      name: 'Clasificador de Tickets',
       tagline: 'Clasifica y enruta cada consulta de soporte.',
       category: 'Atención y reservas',
       summary: 'Cada consulta que entra se clasifica, se etiqueta y se manda a quien corresponde. Las fáciles las contesta solo. El soporte escala sin que crezca el equipo.',
@@ -385,7 +385,7 @@
       nodes: [
         { icon: '🎫', label: 'Ticket nuevo', sub: 'Gmail', type: 'gmailTrigger' },
         { icon: '🏷️', label: 'Clasificar', sub: 'OpenAI', type: 'ai' },
-        { icon: '🔀', label: 'Enrutar', sub: 'Switch', type: 'router' },
+        { icon: '🔀', label: 'Enrutar', sub: 'Enrutador', type: 'router' },
         { icon: '↩️', label: 'Responder', sub: 'Gmail', type: 'gmail' },
         { icon: '📊', label: 'Registrar', sub: 'Google Sheets', type: 'sheets' }
       ],

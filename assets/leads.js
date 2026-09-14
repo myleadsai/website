@@ -199,7 +199,10 @@
     return rows;
   }
 
-  /* Encabezados que sabemos reconocer, vengan de donde vengan. */
+  /* Encabezados que sabemos reconocer, vengan de donde vengan.
+     OJO: los términos en inglés de esta lista NO se traducen. Son los
+     encabezados literales que exportan Apollo, Instantly, Apify y compañía;
+     si se traducen, la importación de esos CSV deja de funcionar. */
   var ALIAS = {
     nombre: ['nombre', 'name', 'full name', 'nombre completo', 'contacto', 'first name', 'firstname'],
     empresa: ['empresa', 'company', 'company name', 'organizacion', 'organization', 'compania', 'negocio'],
