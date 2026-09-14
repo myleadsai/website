@@ -53,7 +53,7 @@
         section { padding: 6rem 0; }
         .text-center { text-align: center; }
         .mt-4 { margin-top: 1.5rem; }
-        .main-header { background-color: transparent; padding: 10rem 0 6rem; text-align: center; }
+        .main-header { background-color: transparent; padding: 5rem 0 6rem; text-align: center; }
         .header-logo { margin-bottom: 2rem; }
         .header-logo img { max-width: 250px; }
         .main-title { font-size: 3.5rem; line-height: 1.1; margin-top: 1rem; margin-bottom: 1rem; }
@@ -124,6 +124,27 @@
             transform: translateY(-5px);
         }
 
+        /* Barra de navegación */
+        .site-nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(18, 18, 18, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #3a3a3a;
+        }
+        .site-nav .container {
+            display: flex; align-items: center; gap: 1.5rem;
+            padding-top: 0.9rem; padding-bottom: 0.9rem; flex-wrap: wrap;
+        }
+        .site-nav .brand { font-weight: 700; color: #fff; text-decoration: none; font-size: 1.1rem; margin-right: auto; }
+        .site-nav .brand span { color: var(--primary-color); }
+        .site-nav a.nav-link { color: var(--light-text-color); text-decoration: none; font-size: 0.95rem; transition: color 0.2s ease; }
+        .site-nav a.nav-link:hover { color: #fff; }
+
+        /* Sección de automatizaciones */
+        .automations-section .service-card { text-align: left; }
+        .automations-section .service-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .automations-section .service-card p { color: var(--light-text-color); font-size: 0.92rem; }
+
         @media (min-width: 769px) { .socios-grid { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 768px) {
             .main-title { font-size: 2.5rem; }
@@ -145,6 +166,17 @@
 </head>
 <body>
     <div id="particles-js"></div>
+
+    <nav class="site-nav">
+        <div class="container">
+            <a class="brand" href="index.html">Myleads<span>.ai</span></a>
+            <a class="nav-link" href="#servicios">Programa</a>
+            <a class="nav-link" href="#automatizaciones">Automatizaciones</a>
+            <a class="nav-link" href="automatizaciones.html">Catálogo</a>
+            <a class="nav-link" href="leads.html">Consola de Leads</a>
+            <a class="nav-link" href="#faq">FAQ</a>
+        </div>
+    </nav>
 
     <header class="main-header" id="inicio">
         <div class="container hero-content">
@@ -253,6 +285,58 @@
                         <h4>Lead Magnets que Capturan</h4>
                         <p>Crea activos digitales de valor que atraigan a tu audiencia ideal y la motiven a dejarte su información de contacto.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="automations-section bg-dark" id="automatizaciones">
+            <div class="container text-center">
+                <h2 class="section-title">9 Automatizaciones con IA, Listas para Implementar</h2>
+                <p class="subtitle">
+                    No son plantillas genéricas: cada automatización se configura con tu nicho, tu tono,
+                    tus integraciones y tus reglas. Abrí el catálogo, personalizá los parámetros y
+                    descargá el blueprint listo para importar &mdash; o lo implementamos por vos.
+                </p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>1. Agente de Voz IA</h4>
+                        <p>Atiende 10 llamadas a la vez, sin límite diario.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>2. Generación de Leads IA</h4>
+                        <p>Prospección en frío automática: buscar, enriquecer, calificar, escribir y seguir.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>3. Generador de Anuncios UGC</h4>
+                        <p>Ingeniería inversa de anuncios virales, reescritos con tu mensaje.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>4. Videos IA sin Rostro</h4>
+                        <p>Crea, publica y escala canales de video corto sin aparecer en cámara.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>5. Agente de Creación de Contenido</h4>
+                        <p>De la idea a la publicación, en todos los canales, en bucle.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>6. Chatbot FAQ Multilingüe</h4>
+                        <p>Responde en el idioma del cliente, al instante, en tu web.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>7. Generador de Ideas Virales para YouTube</h4>
+                        <p>Ideas de contenido respaldadas por datos reales de tu nicho.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>8. Generador de Avatares IA</h4>
+                        <p>Videos de presentador realista sin grabar una sola toma.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>9. Lead Scraper 24/7</h4>
+                        <p>Busca leads mientras dormís.</p>
+                    </div>
+                </div>
+                <div class="cta-buttons mt-4">
+                    <a href="automatizaciones.html" class="btn btn-primary btn-lg">Ver y Configurar el Catálogo</a>
+                    <a href="https://calendly.com/myleads-ia/30min" class="btn btn-secondary">Quiero que lo implementen</a>
                 </div>
             </div>
         </section>
@@ -408,6 +492,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
+    // Si el CDN no responde, la página sigue funcionando igual: solo no hay partículas.
+    if (typeof particlesJS === 'function') {
     particlesJS('particles-js', {
       "particles": {
         "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
@@ -425,6 +511,7 @@
       },
       "retina_detect": true
     });
+    }
     </script>
 </body>
 </html>

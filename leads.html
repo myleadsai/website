@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Consola de Leads — Myleads.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
+<style>
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.1rem; }
+    .stat strong { display: block; font-size: 1.9rem; color: #fff; line-height: 1.1; }
+    .stat span { font-size: 0.78rem; color: var(--light-text-color); text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat.hot strong { color: var(--hot); }
+    .stat.warm strong { color: var(--warm); }
+    .stat.ok strong { color: var(--ok); }
+
+    /* minmax(0,1fr) evita que la tabla ensanche la columna y desborde la página. */
+    .layout { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+    .layout > * { min-width: 0; }
+    @media (max-width: 980px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+
+    .weight-row { margin-bottom: 1.1rem; }
+    .weight-row .top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; }
+    .weight-row .top label { font-size: 0.85rem; font-weight: 600; }
+    .weight-row .top output { font-size: 0.8rem; color: var(--primary-color); font-weight: 600; }
+    .weight-row .help { font-size: 0.75rem; color: var(--light-text-color); }
+
+    .toolbar { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+    .toolbar select, .toolbar input[type="text"] { width: auto; min-width: 150px; padding: 0.5rem 0.7rem; font-size: 0.85rem; }
+
+    .score-cell { display: flex; align-items: center; gap: 0.5rem; }
+    .score-bar { flex: 1; height: 6px; background: #2b2b2b; border-radius: 3px; overflow: hidden; min-width: 44px; }
+    .score-bar i { display: block; height: 100%; border-radius: 3px; }
+    .score-num { font-weight: 700; font-size: 0.85rem; min-width: 26px; text-align: right; }
+
+    .reasons { font-size: 0.72rem; color: var(--light-text-color); margin-top: 0.2rem; }
+    .lead-name { font-weight: 600; color: #fff; }
+    .lead-sub { font-size: 0.78rem; color: var(--light-text-color); }
+    .row-actions { display: flex; gap: 0.35rem; }
+    .icon-btn {
+        background: none; border: 1px solid var(--border-color); color: var(--light-text-color);
+        border-radius: 5px; cursor: pointer; padding: 0.25rem 0.5rem; font-size: 0.8rem;
+    }
+    .icon-btn:hover { border-color: var(--primary-color); color: #fff; }
+
+    .empty { text-align: center; padding: 3rem 1rem; color: var(--light-text-color); }
+
+    .modal-backdrop {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 100;
+        display: none; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal { background: var(--background-color); border: 1px solid var(--border-color); border-radius: 14px; width: 100%; max-width: 640px; margin: auto; }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-color); }
+    .modal-head h2 { color: #fff; font-size: 1.25rem; }
+    .modal-body { padding: 1.5rem; }
+    .modal-foot { padding: 1.1rem 1.5rem; border-top: 1px solid var(--border-color); display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .close-x { background: none; border: none; color: var(--light-text-color); font-size: 1.75rem; cursor: pointer; line-height: 1; }
+    .close-x:hover { color: #fff; }
+    .toast {
+        position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(140%);
+        background: var(--primary-color); color: #fff; padding: 0.85rem 1.5rem; border-radius: 8px;
+        font-size: 0.9rem; z-index: 200; transition: transform 0.3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="container">
+        <a class="brand" href="index.html">Myleads<span>.ai</span></a>
+        <a class="nav-link" href="index.html#servicios">Programa</a>
+        <a class="nav-link" href="automatizaciones.html">Automatizaciones</a>
+        <a class="nav-link active" href="leads.html">Consola de Leads</a>
+        <a class="nav-link" href="https://calendly.com/myleads-ia/30min">Agendar</a>
+    </div>
+</nav>
+
+<header class="page-header">
+    <div class="container">
+        <span class="eyebrow">Uso interno</span>
+        <h1>Consola de Leads</h1>
+        <p class="lead">
+            Definí tu cliente ideal, ajustá el peso de cada criterio y la consola puntúa cada lead
+            de 0 a 100 explicando por qué. Importá lo que traiga el scraper, filtrá lo que vale la
+            pena y exportá solo los calificados.
+        </p>
+        <p class="notice" style="margin-top:1.25rem;">
+            Todo se guarda en este navegador (localStorage). No se envía nada a ningún servidor.
+            Usá <strong>Exportar CSV</strong> para respaldar o compartir con el equipo.
+        </p>
+    </div>
+</header>
+
+<main class="container">
+    <div class="stats" id="stats"></div>
+
+    <div class="layout">
+        <!-- ---------------- Panel de calificación ---------------- -->
+        <aside>
+            <section class="panel">
+                <h3>Perfil de Cliente Ideal</h3>
+                <p class="muted small" style="margin-bottom:1rem;">Palabras clave separadas por coma.</p>
+
+                <div class="field">
+                    <label for="icp-industrias">Industrias / nichos</label>
+                    <input type="text" id="icp-industrias">
+                </div>
+                <div class="field">
+                    <label for="icp-cargos">Cargos que decidan</label>
+                    <input type="text" id="icp-cargos">
+                </div>
+                <div class="field">
+                    <label for="icp-paises">Países</label>
+                    <input type="text" id="icp-paises">
+                </div>
+                <div class="grid-2">
+                    <div class="field">
+                        <label for="icp-min">Empleados (mín.)</label>
+                        <input type="number" id="icp-min" min="0">
+                    </div>
+                    <div class="field">
+                        <label for="icp-max">Empleados (máx.)</label>
+                        <input type="number" id="icp-max" min="0">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="icp-senales">Señales de intención</label>
+                    <input type="text" id="icp-senales">
+                    <div class="help">Ej: contrata, invierte en ads, lanzó curso, busca marketing.</div>
+                </div>
+                <div class="field">
+                    <label for="icp-descarta">Descalificadores</label>
+                    <input type="text" id="icp-descarta">
+                    <div class="help">Si aparece alguna de estas palabras, el lead va directo a Descartado.</div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h3>Peso de cada criterio</h3>
+                <p class="muted small" style="margin-bottom:1rem;">
+                    El puntaje final se normaliza a 100, así que no hace falta que los pesos sumen nada en particular.
+                </p>
+                <div id="weights"></div>
+            </section>
+
+            <section class="panel">
+                <h3>Umbrales</h3>
+                <div class="grid-2">
+                    <div class="field">
+                        <label for="th-hot">Caliente desde</label>
+                        <input type="number" id="th-hot" min="0" max="100">
+                    </div>
+                    <div class="field">
+                        <label for="th-warm">Tibio desde</label>
+                        <input type="number" id="th-warm" min="0" max="100">
+                    </div>
+                </div>
+                <button class="btn btn-ghost btn-sm" id="reset-config" style="width:100%;">Restaurar valores por defecto</button>
+            </section>
+        </aside>
+
+        <!-- ---------------- Tabla de leads ---------------- -->
+        <section>
+            <div class="panel">
+                <div class="toolbar">
+                    <button class="btn btn-primary btn-sm" id="add-lead">+ Agregar lead</button>
+                    <button class="btn btn-secondary btn-sm" id="import-btn">Importar CSV</button>
+                    <input type="file" id="import-file" accept=".csv,text/csv" hidden>
+                    <button class="btn btn-ghost btn-sm" id="export-btn">Exportar CSV</button>
+                    <button class="btn btn-ghost btn-sm" id="export-qualified">Exportar solo calificados</button>
+                    <button class="btn btn-ghost btn-sm" id="demo-btn">Cargar ejemplos</button>
+                </div>
+                <div class="toolbar">
+                    <input type="text" id="search" placeholder="Buscar por nombre, empresa o email…">
+                    <select id="filter-temp">
+                        <option value="">Toda temperatura</option>
+                        <option value="Caliente">Caliente</option>
+                        <option value="Tibio">Tibio</option>
+                        <option value="Frío">Frío</option>
+                        <option value="Descartado">Descartado</option>
+                    </select>
+                    <select id="filter-status">
+                        <option value="">Todo estado</option>
+                    </select>
+                    <select id="sort-by">
+                        <option value="score">Ordenar por puntaje</option>
+                        <option value="nombre">Ordenar por nombre</option>
+                        <option value="empresa">Ordenar por empresa</option>
+                        <option value="fecha">Ordenar por fecha</option>
+                    </select>
+                    <button class="btn btn-danger btn-sm" id="clear-btn">Vaciar lista</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Lead</th>
+                                <th>Puntaje</th>
+                                <th>Temperatura</th>
+                                <th>Estado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="leads-body"></tbody>
+                    </table>
+                </div>
+                <div class="empty" id="empty-state" hidden>
+                    Todavía no hay leads. Agregá uno a mano, importá un CSV del scraper o cargá los ejemplos.
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Modal de alta/edición -->
+<div class="modal-backdrop" id="lead-modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+        <div class="modal-head">
+            <h2 id="lead-modal-title">Nuevo lead</h2>
+            <button class="close-x" id="lead-modal-close" aria-label="Cerrar">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="grid-2">
+                <div class="field"><label for="f-nombre">Nombre</label><input type="text" id="f-nombre"></div>
+                <div class="field"><label for="f-empresa">Empresa</label><input type="text" id="f-empresa"></div>
+                <div class="field"><label for="f-cargo">Cargo</label><input type="text" id="f-cargo"></div>
+                <div class="field"><label for="f-industria">Industria</label><input type="text" id="f-industria"></div>
+                <div class="field"><label for="f-email">Email</label><input type="email" id="f-email"></div>
+                <div class="field"><label for="f-pais">País</label><input type="text" id="f-pais"></div>
+                <div class="field"><label for="f-empleados">Empleados</label><input type="number" id="f-empleados" min="0"></div>
+                <div class="field"><label for="f-web">Sitio web</label><input type="url" id="f-web"></div>
+            </div>
+            <div class="field"><label for="f-senal">Señal de intención</label><input type="text" id="f-senal" placeholder="Ej: publicó que busca cerrar más clientes"></div>
+            <div class="field"><label for="f-notas">Notas</label><textarea id="f-notas"></textarea></div>
+            <div class="checkbox-row">
+                <input type="checkbox" id="f-verificado">
+                <label for="f-verificado">Email verificado</label>
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn btn-primary btn-sm" id="lead-save">Guardar</button>
+            <button class="btn btn-ghost btn-sm" id="lead-cancel">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de detalle / email -->
+<div class="modal-backdrop" id="detail-modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+        <div class="modal-head">
+            <h2 id="detail-title">Detalle</h2>
+            <button class="close-x" id="detail-close" aria-label="Cerrar">&times;</button>
+        </div>
+        <div class="modal-body" id="detail-body"></div>
+        <div class="modal-foot">
+            <button class="btn btn-ghost btn-sm" id="detail-copy">Copiar email de contacto</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="site-footer">
+    <div class="container"><p>&copy; 2026 <a href="index.html">Myleads.ai</a> — Consola interna.</p></div>
+</footer>
+
+<script src="assets/leads.js"></script>
+</body>
+</html>
