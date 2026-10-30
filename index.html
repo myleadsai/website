@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transforma tu Conocimiento en un Negocio Exitoso - Myleads.ai</title>
+    <title>Sistemas integrales a medida para pymes - Myleads.ai</title>
+    <meta name="description" content="Armamos sistemas integrales a medida para que toda la información de tu empresa esté en un solo lugar y las tareas repetitivas se hagan solas. Primero entendemos tu dolor, después construimos la solución.">
+    <meta property="og:title" content="Sistemas integrales a medida para pymes - Myleads.ai">
+    <meta property="og:description" content="Stock, pedidos, facturación, cobranzas y reportes en un solo sistema hecho para tu empresa. Agendá tu diagnóstico.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -72,13 +76,18 @@
         .service-card svg { margin-bottom: 1.5rem; }
         .service-card h4 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--primary-color); }
         
-        /* Socios Section */
-        .socios-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-        .socio-card { padding: 2rem; }
-        .socio-foto { border-radius: 50%; border: 5px solid var(--primary-color); width: 200px; height: 200px; object-fit: cover; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(93, 63, 211, 0.7); }
-        .socio-card h3 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; }
-        .socio-card h4 { font-size: 1.2rem; color: var(--light-text-color); margin-bottom: 1rem; }
         
+        /* Steps & Compare */
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; background-color: var(--primary-color); color: #fff; font-weight: 700; font-size: 1.25rem; margin-bottom: 1rem; }
+        .compare-card { text-align: left; }
+        .compare-card ul { list-style: none; margin-top: 1rem; }
+        .compare-card li { margin-bottom: 0.75rem; padding-left: 1.75rem; position: relative; }
+        .compare-card li::before { position: absolute; left: 0; font-weight: bold; }
+        .compare-card.them { border-color: var(--light-text-color); }
+        .compare-card.them h4 { color: var(--light-text-color); }
+        .compare-card.them li::before { content: '✗'; color: var(--light-text-color); }
+        .compare-card.us li::before { content: '✓'; color: var(--primary-color); }
+
         /* Program & Este Programa Es Para Ti Si... sections */
         .program-section .subtitle, .for-you-section .subtitle { max-width: 800px; margin: 0 auto 2rem; font-size: 1.4rem; line-height: 1.8; }
         .for-you-list { list-style: none; padding: 0; text-align: left; max-width: 700px; margin: 2rem auto 0; }
@@ -124,7 +133,6 @@
             transform: translateY(-5px);
         }
 
-        @media (min-width: 769px) { .socios-grid { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 768px) {
             .main-title { font-size: 2.5rem; }
             .btn-secondary { margin: 1rem 0 0 0; }
@@ -138,8 +146,6 @@
             .main-title { font-size: 2rem; }
             .subtitle { font-size: 1rem; }
             .service-card h4 { font-size: 1.2rem; }
-            .metric-item strong { font-size: 1.5rem; }
-            .metric-item span { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -150,183 +156,185 @@
         <div class="container hero-content">
             <div class="header-logo">
                 <img src="Logo for myleads.ai.jpg" alt="Myleads.ai Logo">
-                <h1 class="main-title">Cómo Transformar tu Conocimiento en un Negocio de 6 y 7 Cifras</h1>
+                <h1 class="main-title">Toda la información de tu empresa en un solo sistema</h1>
             </div>
-            <p class="subtitle">Descubre el método probado para empaquetar tu conocimiento único, atraer a la audiencia perfecta y construir un negocio online que te dé libertad y propósito.</p>
+            <p class="subtitle">Armamos sistemas integrales a medida para pymes que hoy trabajan con Excel, WhatsApp y herramientas que no se hablan entre sí. Primero entendemos tu dolor, después construimos la solución.</p>
             <div class="cta-buttons">
-                <a href="#programa" class="btn btn-primary">Descubre el Programa</a>
-                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-secondary">Agenda una Llamada</a>
+                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary">Agendá tu diagnóstico</a>
+                <a href="#como-trabajamos" class="btn btn-secondary">Cómo trabajamos</a>
             </div>
         </div>
     </header>
     <main>
         <section class="problem-section" id="problema">
             <div class="container">
-                <h2 class="section-title">El Problema: ¿Te sientes estancado?</h2>
+                <h2 class="section-title">¿Tu empresa funciona con WhatsApp y 14 Excel?</h2>
                 <div class="problem-grid">
                     <div class="problem-card">
-                        <h3>Falta de Claridad</h3>
-                        <p>Tienes mucho conocimiento, pero no sabes cómo estructurarlo en una oferta atractiva que la gente esté dispuesta a pagar.</p>
+                        <h3>La información está en todos lados</h3>
+                        <p>Stock en un Excel, pedidos por WhatsApp, facturas en Drive. Cada dato se copia a mano, y cada copia es un error esperando a pasar.</p>
                     </div>
                     <div class="problem-card">
-                        <h3>Ingresos Inconsistentes</h3>
-                        <p>Dependes de clientes individuales y no tienes un sistema escalable para generar ingresos de forma regular y predecible.</p>
+                        <h3>Todo pasa por vos</h3>
+                        <p>Precios, stock, clientes, quién debe qué: lo sabés vos. Si te vas una semana, la empresa se frena.</p>
                     </div>
                     <div class="problem-card">
-                        <h3>Miedo a las Redes</h3>
-                        <p>Sabes que necesitas estar online, pero no tienes una estrategia efectiva para convertir seguidores en clientes de pago.</p>
+                        <h3>Crecer te genera más desorden</h3>
+                        <p>Más pedidos, más planillas, más gente para controlar. Vendés más, pero el tiempo y la plata se pierden en el medio.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="for-you-section" id="para-quien">
+        <section class="program-section bg-dark" id="que-hacemos">
             <div class="container text-center">
-                <h2 class="section-title">Este Programa Es Para Ti Si...</h2>
+                <h2 class="section-title">Qué hacemos</h2>
                 <p class="subtitle">
-                    Si te identificas con alguno de estos puntos, estás en el lugar correcto. Nuestro programa está diseñado para guiarte.
+                    No vendemos un software. No somos una consultora. No somos un programador más. Hacemos <strong>sistemas integrales a medida</strong>: encontramos dónde tu empresa pierde tiempo, información y plata, y construimos un sistema que <strong>conecta todas las áreas en un solo lugar</strong> y <strong>automatiza las tareas repetitivas</strong>.
+                </p>
+            </div>
+        </section>
+
+        <section class="services-section" id="como-trabajamos">
+            <div class="container">
+                <h2 class="section-title">Cómo trabajamos</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="step-number">1</div>
+                        <h4>Diagnóstico de procesos</h4>
+                        <p>Analizamos cómo trabaja tu empresa hoy: quién carga qué, dónde se repite el trabajo y dónde se pierde la información.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="step-number">2</div>
+                        <h4>Propuesta con números</h4>
+                        <p>Te mostramos cuánto tiempo y plata estás perdiendo, qué vamos a construir y qué vas a ahorrar. Si no te cierra, no seguimos.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="step-number">3</div>
+                        <h4>Tu sistema a medida</h4>
+                        <p>Construimos el sistema alrededor de cómo trabaja tu equipo, lo implementamos con ustedes y lo ajustamos a medida que tu empresa crece.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg mt-4">Quiero mi diagnóstico</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section bg-dark" id="que-resolvemos">
+            <div class="container">
+                <h2 class="section-title">Qué podemos resolver en tu empresa</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Stock que coincide</h4>
+                        <p>Cada venta descuenta stock en el momento. Depósito, ventas y vos ven el mismo número, y el sistema avisa cuando algo baja del mínimo.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Pedidos que se cargan una vez</h4>
+                        <p>El pedido entra una sola vez y sigue solo: depósito lo prepara, administración lo factura y el cliente recibe el aviso.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Tus números en tiempo real</h4>
+                        <p>Ventas, costos, cobranzas y margen en un tablero que abrís desde el celular. Decidís con datos, no con intuición.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Cobranzas bajo control</h4>
+                        <p>Cada factura con su vencimiento. El sistema le avisa al cliente antes de que venza y a vos cuando se atrasa.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Comunicación interna ordenada</h4>
+                        <p>Cada tarea tiene un lugar, un responsable y un estado. Sabés qué está pendiente sin perseguir a nadie por WhatsApp.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Procesos automatizados</h4>
+                        <p>Lo que hoy se copia, se avisa o se calcula a mano, lo hace el sistema. Tu equipo actual rinde más, sin sumar sueldos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section" id="diferencia">
+            <div class="container">
+                <h2 class="section-title">Por qué no un sistema enlatado</h2>
+                <div class="services-grid">
+                    <div class="service-card compare-card them">
+                        <h4>ERP enlatado, consultora o programador suelto</h4>
+                        <ul>
+                            <li>Tu empresa se tiene que adaptar al sistema.</li>
+                            <li>Pagás por cien funciones y usás diez.</li>
+                            <li>Un informe con lo que está mal, y después "implementalo vos".</li>
+                            <li>Se programa lo que pediste, sin analizar cómo trabaja tu equipo.</li>
+                        </ul>
+                    </div>
+                    <div class="service-card compare-card us">
+                        <h4>Myleads.ai</h4>
+                        <ul>
+                            <li>El sistema se adapta a cómo trabaja tu empresa.</li>
+                            <li>Construimos solo lo que necesitás, conectado con lo que ya usás.</li>
+                            <li>Diagnóstico, propuesta y construcción con el mismo equipo.</li>
+                            <li>Primero entendemos tu dolor, después construimos la solución.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="for-you-section bg-dark" id="para-quien">
+            <div class="container text-center">
+                <h2 class="section-title">Es para vos si...</h2>
+                <p class="subtitle">
+                    Trabajamos con dueños de pymes que ya venden, pero sienten que el desorden les come el tiempo y la plata.
                 </p>
                 <ul class="for-you-list">
-                    <li>Eres un experto en tu campo pero no sabes cómo monetizar tu conocimiento de forma escalable.</li>
-                    <li>Quieres construir una marca personal sólida y atraer clientes de alto valor sin perseguirlos.</li>
-                    <li>Estás cansado de intercambiar tiempo por dinero y buscas crear sistemas que generen ingresos en automático.</li>
-                    <li>Buscas una comunidad de apoyo y el acompañamiento de mentores con experiencia probada.</li>
-                    <li>Deseas dejar un legado, impactar a más personas y vivir de tu pasión con total libertad.</li>
+                    <li>Tu empresa tiene entre 10 y 100 personas y se organiza con Excel, WhatsApp y herramientas sueltas.</li>
+                    <li>Para saber cuánto vendiste este mes, alguien tiene que armar un informe.</li>
+                    <li>El mismo dato se carga dos, tres o cuatro veces en distintas áreas.</li>
+                    <li>Probaste un sistema enlatado y tu equipo volvió a la planilla.</li>
+                    <li>Querés crecer sin sumar más gente para controlar a la gente.</li>
                 </ul>
-                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg mt-4">¡Sí, Esto Es Para Mí!</a>
+                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg mt-4">Sí, quiero ordenar mi empresa</a>
             </div>
         </section>
 
-        <section class="services-section bg-dark" id="servicios">
+        <section class="final-cta-section" id="contacto">
             <div class="container">
-                <h2 class="section-title">El Método "Conocimiento Exitoso"</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <h4>Consultorías Grupales en Vivo Semanal con Franco y Tomás</h4>
-                        <p>Recibes estrategias personalizadas y resuelves todas tus consultas en reuniones semanales en vivo con los fundadores.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <h4>Auditoría Personalizada de tu Negocio</h4>
-                        <p>Evaluamos mejoras, ajustamos procesos y definimos estrategias para optimizar resultados.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <h4>Reunión de Revisión del Estado de tu Negocio</h4>
-                        <p>Revisión estratégica a los 45 días para analizar resultados y ajustar tu plan de crecimiento.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <h4>Soporte 1 a 1 con nuestros Consultores por Chat Privado</h4>
-                        <p>Soporte directo a través de chat privado, donde recibirás feedback y soluciones prácticas de expertos en cada área.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <h4>+20hs de Reuniones Semanales con Expertos de diversas áreas</h4>
-                        <p>Enfocadas en estrategias avanzadas de anuncios, prospección, ventas, entrega de servicio y operaciones.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <h4>Acceso a Eventos Anuales con los Fundadores y el Equipo</h4>
-                        <p>Asiste a eventos exclusivos para ampliar tu red, acceder a conocimientos de alto nivel y conectar con líderes del sector.</p>
-                    </div>
-                </div>
+                <h2 class="section-title">Agendá tu diagnóstico</h2>
+                <p class="subtitle">En una llamada de 30 minutos con Franco y Tomás vemos cómo circula hoy la información en tu empresa y dónde se está perdiendo tiempo y plata. Sin compromiso.</p>
+                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg">Agendar mi llamada</a>
             </div>
         </section>
-        <section class="program-section" id="programa">
-            <div class="container text-center">
-                <h2 class="section-title">Embudos, Automatizaciones y Más</h2>
-                <p class="subtitle">
-                    En Myleads.ai, no solo te damos un método, sino que te ayudamos a construir la maquinaria para que tu negocio funcione en piloto automático. Te enseñaremos a crear <strong>embudos de ventas</strong> que capturen leads, a implementar <strong>automatizaciones</strong> que nutran a tus prospectos y a diseñar <strong>CTAs</strong> irresistibles.
-                </p>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h4>Embudos de Venta Optimizados</h4>
-                        <p>Construye un camino claro para que tus seguidores se conviertan en clientes de pago, desde el primer contacto hasta la venta.</p>
-                    </div>
-                    <div class="service-card">
-                        <h4>Automatización Inteligente</h4>
-                        <p>Aprende a usar herramientas para que tus procesos de marketing y ventas trabajen por ti 24/7, liberando tu tiempo.</p>
-                    </div>
-                    <div class="service-card">
-                        <h4>Lead Magnets que Capturan</h4>
-                        <p>Crea activos digitales de valor que atraigan a tu audiencia ideal y la motiven a dejarte su información de contacto.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="asesoria-section" id="asesoria">
-            <div class="container text-center">
-                <h2 class="section-title">¿Tienes preguntas o quieres un plan a medida?</h2>
-                <p class="subtitle">Agenda una asesoría gratuita de 15 minutos para que hablemos sobre tus objetivos y cómo podemos ayudarte a construir un negocio rentable y sostenible.</p>
-                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg">Agenda tu Sesión de 15 Minutos</a>
-            </div>
-        </section>
-        <section class="final-cta-section bg-dark" id="contacto">
+
+        <section class="faq-section bg-dark" id="faq">
             <div class="container">
-                <h2 class="section-title">Es Hora de Compartir tu Genio con el Mundo y Ser Recompensado por Ello</h2>
-                <a href="https://calendly.com/myleads-ia/30min" class="btn btn-primary btn-lg">Comienza tu Transformación Ahora</a>
-            </div>
-        </section>
-        <section class="faq-section" id="faq">
-            <div class="container">
-                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <h2 class="section-title">Preguntas frecuentes</h2>
                 <div class="faq-item">
-                    <div class="faq-question">¿Cómo funciona el programa?</div>
+                    <div class="faq-question">¿Qué es un sistema integral a medida?</div>
                     <div class="faq-answer">
-                        <p>Nuestro programa "Conocimiento Exitoso" está diseñado para guiarte paso a paso. Incluye:</p>
-                        <ul>
-                            <li>Consultorías grupales en vivo semanales con Franco y Tomás.</li>
-                            <li>Auditorías personalizadas de tu negocio para ajustar procesos y estrategias.</li>
-                            <li>Reuniones de revisión de progreso a los 45 días.</li>
-                            <li>Soporte 1 a 1 por chat privado con nuestros consultores.</li>
-                            <li>Más de 20 horas de reuniones semanales con expertos en diversas áreas (anuncios, prospección, ventas, etc.).</li>
-                            <li>Acceso a eventos anuales exclusivos con los fundadores y el equipo.</li>
-                        </ul>
-                        <p>Está pensado para darte el acompañamiento y las herramientas necesarias para escalar tu conocimiento.</p>
+                        <p>Es un sistema que conecta todas las áreas de tu empresa (ventas, depósito, administración, facturación, cobranzas) en un solo lugar, construido según cómo trabaja tu equipo. Hace lo que hace un ERP, pero sin obligarte a cambiar tu forma de trabajar ni a pagar por funciones que no usás.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">¿Quiénes pueden participar?</div>
+                    <div class="faq-question">¿En qué consiste el diagnóstico?</div>
                     <div class="faq-answer">
-                        <p>Este programa es ideal para emprendedores, coaches, consultores, formadores y profesionales que ya tienen un conocimiento o habilidad especializada y desean transformarlo en un negocio online de alto impacto.</p>
-                        <p>Si te sientes estancado, luchas por conseguir clientes de forma consistente o quieres escalar tus ingresos sin sacrificar tu tiempo, este programa es para ti.</p>
+                        <p>Analizamos los procesos de tu empresa: quién carga qué información, dónde se duplica, dónde se pierde y cuánto tiempo consume. Con eso armamos una propuesta concreta, con lo que vamos a construir y lo que vas a ahorrar.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">¿Qué tipo de resultados puedo esperar?</div>
+                    <div class="faq-question">¿Tengo que dejar de usar las herramientas que ya tengo?</div>
                     <div class="faq-answer">
-                        <p>Nuestros clientes han logrado:</p>
-                        <ul>
-                            <li>Duplicar y triplicar su facturación en pocos meses.</li>
-                            <li>Crear sistemas de ventas automatizados que trabajan 24/7.</li>
-                            <li>Aumentar su impacto y alcance, posicionándose como referentes en su nicho.</li>
-                            <li>Liberar tiempo personal al optimizar procesos y delegar tareas.</li>
-                            <li>Construir ofertas de alto valor que atraen a clientes ideales.</li>
-                        </ul>
-                        <p>Si bien los resultados varían según el compromiso y la aplicación, te proporcionamos una metodología probada y el soporte constante para que alcances tus metas.</p>
+                        <p>No necesariamente. Si una herramienta te funciona, el sistema se conecta con ella. Reemplazamos solo lo que hoy te genera trabajo doble o errores.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">¿Cuánto tiempo dura el programa?</div>
+                    <div class="faq-question">¿Cuánto cuesta?</div>
                     <div class="faq-answer">
-                        <p>El programa tiene una duración inicial de 3 meses, durante los cuales recibirás todas las consultorías, auditorías y el soporte intensivo. Sin embargo, muchos de nuestros miembros eligen continuar con nosotros en modalidades avanzadas para seguir escalando sus resultados a largo plazo.</p>
-                        <p>Nuestra meta es que construyas un negocio sostenible, no una solución rápida.</p>
+                        <p>Depende de lo que tu empresa necesite. Por eso arrancamos con el diagnóstico: te pasamos una propuesta con el precio y el ahorro estimado antes de que decidas nada. Si no te cierra, no seguimos.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">¿Qué diferencia a Myleads.ai de otros programas?</div>
+                    <div class="faq-question">¿Mi equipo lo va a poder usar?</div>
                     <div class="faq-answer">
-                        <p>Nos diferenciamos en varios puntos clave:</p>
-                        <ul>
-                            <li><strong>Enfoque Práctico y Personalizado:</strong> No solo enseñamos teoría, te ayudamos a implementar las estrategias en tu negocio específico.</li>
-                            <li><strong>Soporte Directo de Fundadores:</strong> Franco y Tomás están activamente involucrados en las consultorías y el soporte.</li>
-                            <li><strong>Comunidad de Alto Nivel:</strong> Te conectarás con otros emprendedores ambiciosos y aprenderás de sus experiencias.</li>
-                            <li><strong>Metodología Integral:</strong> Cubrimos desde la oferta, pasando por embudos y automatizaciones, hasta la atracción y cierre de clientes.</li>
-                            <li><strong>Resultados Medibles:</strong> Nos enfocamos en métricas claras para asegurar tu crecimiento.</li>
-                        </ul>
-                        <p>No somos un curso más; somos una mentoría y una comunidad que impulsa tu éxito.</p>
+                        <p>Sí. Como el sistema se diseña a partir de cómo trabaja tu equipo, no tienen que aprender una forma nueva de hacer las cosas. Además, lo implementamos con ustedes y se puede usar desde la computadora o el celular.</p>
                     </div>
                 </div>
             </div>
@@ -335,7 +343,7 @@
     <footer class="main-footer">
         <div class="container">
             <p>
-                &copy; 2023 
+                &copy; 2026 
                 <a href="https://myleadsai.github.io/website/" target="_blank" style="color: #5d3fd3; text-decoration: underline;">
                     myleadsai.github.io/website
                 </a>. Todos los derechos reservados.
