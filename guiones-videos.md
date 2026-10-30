@@ -3,6 +3,9 @@
 Estilo de referencia: Ramiro Cubria, Alex Hormozi, Iman Gadzhi.
 Formato: vertical 9:16, a cámara, 30 a 60 segundos, subtítulos grandes palabra por palabra.
 
+> **Antes de grabar cualquiera de estos guiones**, completá la Ficha del video de `sistema-videos.md`.
+> Todos los cierres llevan la frase de oferta ("Nosotros armamos sistemas a medida para que esto no pase.") antes del CTA, y el CTA tiene que prometer un regalo concreto (checklist, calculadora o diagnóstico).
+
 ---
 
 ## 1. La fórmula (todos los videos siguen esto)
